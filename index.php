@@ -1,5 +1,7 @@
 <?php
 
+	$_SERVER['Script'] = "homepage.php";
+	
 	require "include/dbms.inc.php";
 	require "include/template.inc.php";
 
