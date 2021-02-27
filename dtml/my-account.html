@@ -9,8 +9,8 @@
                             <ul role="tablist" class="nav flex-column dashboard-list">
                                 <li><a href="#dettagli_account" data-toggle="tab" class="nav-link active">Il mio account</a></li>
                                 <li> <a href="#ordini" data-toggle="tab" class="nav-link">I miei ordini</a></li>
-                                <li><a href="#downloads" data-toggle="tab" class="nav-link">I miei indirizzi</a></li>
-                                <li><a href="#address" data-toggle="tab" class="nav-link">I miei pagamenti</a></li>
+                                <li><a href="#indirizzi" data-toggle="tab" class="nav-link">I miei indirizzi</a></li>
+                                <li><a href="#pagamenti" data-toggle="tab" class="nav-link">I miei metodi di pagamento</a></li>
                                 
                             </ul>
                         </div>    
@@ -40,7 +40,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="ordini">
-                                <h3>Orders</h3>
+                                <h3>I miei ordini</h3>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
@@ -56,45 +56,54 @@
                                                 <tr>
                                                     <td><[Numero_ordine]></td>
                                                     <td><[Data]></td>
-                                                    <td><p><[foreach]> <[Articolo]> <br> <[/foreach]></p></td>
+                                                    <td><[Articoli]></td>
                                                     <td><[Totale]></td>
-                                                    <td><a href="<[Link_dettagli_ordine]>" class="view">Vedi altri dettagli</a></td>
+                                                    <td>
+                                                        <button type="submit" onclick="location.href='<[Link_dettagli_ordine]>'"  style="background-color: #0063d1">Vedi altro</button>  
+                                                    </td>
                                                 </tr>
                                             <[/foreach]>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="downloads">
-                                <h3>Downloads</h3>
+                            <div class="tab-pane fade " id="indirizzi">
+                                <h3>I miei indirizzi</h3>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Product</th>
-                                                <th>Downloads</th>
-                                                <th>Expires</th>
-                                                <th>Download</th>	 	 	 	
+                                                <th>Destinatario</th>
+                                                <th>Indirizzo</th>
+                                                <th>Telefono</th>
+                                                <th>Nota</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Shopnovilla - Free Real Estate PSD Template</td>
-                                                <td>May 10, 2018</td>
-                                                <td><span class="danger">Expired</span></td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Organic - ecommerce html template</td>
-                                                <td>Sep 11, 2018</td>
-                                                <td>Never</td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
+                                            <[foreach]>
+                                                <tr>
+                                                    <td><[Destinatario]></td>
+                                                    <td><[Indirizzo]></td>
+                                                    <td><[Telefono2]></td>
+                                                    <td><[Nota]></td>
+                                                    <td>
+                                                        <button type="submit" onclick="location.href='<[Link_elimina]>'"  style="background-color: #0063d1">Elimina</button>  
+                                                    </td>
+                                                </tr>
+                                            <[/foreach]>
                                         </tbody>
                                     </table>
+                                    
+                                    <div class="login_submit">
+                                        <button class="login_submit" type="submit" onclick="location.href='aggiungi-indirizzo.php'"  style="background-color: #0063d1">Aggiungi un indirizzo</button>
+                                        
+                                    </div>
+                                    <p style="color: #0063d1"><[Messaggio_errore]></p>
+                                    
                                 </div>
                             </div>
-                            <div class="tab-pane" id="address">
+                            <div class="tab-pane" id="pagamenti">
                                <p>The following addresses will be used on the checkout page by default.</p>
                                 <h4 class="billing-address">Billing address</h4>
                                 <a href="#" class="view">Edit</a>

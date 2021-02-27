@@ -200,5 +200,5 @@
             }
             //--------FINE PIU VENDUTI--------
         }
-        else header("Location: dtml/errore.html");
+        else header("Location: errore.php");
 ?>

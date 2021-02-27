@@ -13,7 +13,6 @@
         $result = $mysqli -> query($query);
         $autenticazione = false;
         
-
         while($script = $result -> fetch_assoc()){
            
             if($script['Script'] == $_SERVER['Script'])
