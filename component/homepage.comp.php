@@ -200,5 +200,5 @@
             }
             //--------FINE PIU VENDUTI--------
         }
-        else header("Location: dtml/404.html");
+        else header("Location: dtml/errore.html");
 ?>
