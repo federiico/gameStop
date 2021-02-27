@@ -16,7 +16,7 @@
         $main -> setContent("Link_tasto_1",'login.php');
         $main -> setContent("Tasto_2",'Registrati');
         $main -> setContent("Link_tasto_2",'registrazione.php');
-        
+        $main -> setContent("hidden",'hidden');
     }
     else{
         
@@ -29,5 +29,7 @@
         $main -> setContent("Link_tasto_1",'');
         $main -> setContent("Tasto_2","Procedi All' Ordine");
         $main -> setContent("Link_tasto_2",'');
+
+
     }
 ?>
