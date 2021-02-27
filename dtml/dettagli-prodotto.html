@@ -41,9 +41,11 @@
                                 <span class="old_price"><[Prezzo_vecchio]></span>
                             </div>
                             <div class="product_variant quantity">
-                                <label>Quantità</label>
-                                <input min="1" max="100" value="1" type="number">
-                                <button class="button" type="submit">Aggiungi al carrello</button>     
+                                <form method="GET" action="submit">
+                                    <label>Quantità</label>
+                                    <input min="1" max="100" value="1" type="number" id="quantita" name="quantita">
+                                    <button class="button" type="submit"><a href="gestione_carrello.php?gioco=<[Id_prodotto]>">Aggiungi al carrello</a></button>   
+                                </form>  
                             </div>
                             
                         </form>

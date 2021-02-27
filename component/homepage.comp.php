@@ -14,6 +14,7 @@
         
                 $body -> setContent("Immagine_PS4","getImage.php?Id_articolo=".$giocoPS4['Id_articolo']);
                 $body -> setContent("Nome_articolo_PS4",$giocoPS4['Nome']);
+                $body -> setContent("Id_prodotto_PS4",$giocoPS4['Id_articolo']);
         
                 if($giocoPS4['Sconto'] > 0){
         
@@ -42,6 +43,7 @@
         
                 $body -> setContent("Immagine_Xbox","getImage.php?Id_articolo=".$giocoXbox['Id_articolo']);
                 $body -> setContent("Nome_articolo_Xbox",$giocoXbox['Nome']);
+                $body -> setContent("Id_prodotto_Xbox",$giocoXbox['Id_articolo']);
         
                 if($giocoXbox['Sconto'] > 0){
         
@@ -70,6 +72,7 @@
         
                 $body -> setContent("Immagine_Nintendo","getImage.php?Id_articolo=".$giocoNintendo['Id_articolo']);
                 $body -> setContent("Nome_articolo_Nintendo",$giocoNintendo['Nome']);
+                $body -> setContent("Id_prodotto_Nintendo",$giocoNintendo['Id_articolo']);
         
                 if($giocoNintendo['Sconto'] > 0){
         
@@ -97,6 +100,7 @@
         
                 $body -> setContent("Immagine_Pc","getImage.php?Id_articolo=".$giocoPc['Id_articolo']);
                 $body -> setContent("Nome_articolo_Pc",$giocoPc['Nome']);
+                $body -> setContent("Id_prodotto_PC",$giocoPc['Id_articolo']);
         
                 if($giocoPc['Sconto'] > 0){
         
