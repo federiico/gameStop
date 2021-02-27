@@ -33,6 +33,8 @@
                         $body -> setContent("Immagine","getImage.php?Id_articolo=".$gioco['Id_articolo']);
                         $body -> setContent("Nome_articolo",$gioco['Nome']);
                         $body -> setContent("Descrizione_articolo",$gioco['Descrizione']);
+                        $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
+                        
 
                         if($gioco['Sconto'] > 0){
 
@@ -68,7 +70,6 @@
                             else $body -> setContent("Prezzo_corrente","€ ".$gioco['Prezzo']);
 
                             $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
-                            $body -> setContent("conta", $query['conta']);
 
                         }
                     $body -> setContent("conta", $conta['conta']);

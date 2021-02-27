@@ -32,6 +32,7 @@
         }
 
         $body -> setContent("Nome_articolo",$gioco['Nome']);
+        $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
 
         $query = "SELECT AVG(Stelle) AS media FROM Recensione WHERE Id_articolo='".$_GET['Id_articolo']."'";
 
