@@ -41,18 +41,17 @@
                             <button data-role="grid_list" type="button"  class="btn-list" data-toggle="tooltip" title="List"></button>
                         </div>
                         <div class=" niceselect_option">
-                            <form class="select_option" action="#">
-                                <select name="orderby" id="short">
-
-                                    <option selected value="1">Ordina per: Prezzo Crescente</option>
-                                    <option value="2">Ordina per: Prezzo Derescente</option>
-                                    <option value="3">Ordina per: Anno di Uscita</option>
+                            <form method="GET" class="select_option" action="">
+                                <select name="orderby" id="short" onchange="location = document.URL">
+                                    <option selected value="1">Ordina per: Uscita</option>
+                                    <option value="2" >Ordina per: Prezzo Decrescente</option>
+                                    <option value="3" >Ordina per: Prezzo Crescente</option>
                                 </select>
                             </form>
                         </div>
-                        <div class="page_amount">
+                        <!--<div class="page_amount">
                             <p>Showing 1–9 of <[conta]> results</p>
-                        </div>
+                        </div>-->
                     </div>
                      <!--shop toolbar end-->
 
@@ -62,7 +61,7 @@
                                     <article class="single_product">
                                         <figure>
                                             <div class="product_thumb">
-                                                <a class="primary_img" href="dtml/product-details.html"><img src="<[Immagine]>" alt=""></a>
+                                                <a class="primary_img" href="<[Link_prodotto]>"><img src="<[Immagine]>" alt=""></a>
                                                 <div class="label_product">
                                                     <span class="label_sale"><[Offerta]></span>
                                                 </div>
