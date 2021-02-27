@@ -622,7 +622,8 @@
         gallery:'gallery_01', 
         responsive : true,
         cursor: 'crosshair',
-        zoomType : 'inner'
+        zoomType : 'inner',
+        zoomEnabled: false,
     
     });  
     
