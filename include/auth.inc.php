@@ -12,16 +12,24 @@
     
         $result = $mysqli -> query($query);
         $autenticazione = false;
+        
+
         while($script = $result -> fetch_assoc()){
-            if($script['Script'] == $_SERVER['Script']);
+           
+            if($script['Script'] == $_SERVER['Script'])
                 $autenticazione = true;
         }
+      
     }
     else{ 
-        if($_SERVER['Script'] == "homepage.php")
+
+        
+        if($_SERVER['Script'] == "homepage.php" | $_SERVER['Script'] == "shop-page.php" | $_SERVER['Script'] == "dettagli-prodotto.php"
+            | $_SERVER['Script'] == "login.php" | $_SERVER['Script'] == "registrazione.php")
             $autenticazione = true;
         else $autenticazione = false;
     }
+    
         
     
 ?>
