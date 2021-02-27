@@ -9,6 +9,14 @@
         $main -> setContent('Link_MyAccount','login.php');
         $main -> setContent("Login-logout",'Registrati');
         $main -> setContent("Link_login-logout",'registrazione.php');
+
+        $main -> setContent("Totale_Carrello",'0 €');
+        $main -> setContent("Quantità_Carrello",'0');
+        $main -> setContent("Tasto_1",'Accedi');
+        $main -> setContent("Link_tasto_1",'login.php');
+        $main -> setContent("Tasto_2",'Registrati');
+        $main -> setContent("Link_tasto_2",'registrazione.php');
+        
     }
     else{
         
@@ -16,5 +24,10 @@
         $main -> setContent('Link_MyAccount','my-account.php');
         $main -> setContent('Login-logout','Logout');
         $main -> setContent("Link_login-logout",'include/logout.inc.php');
+
+        $main -> setContent("Tasto_1",'Vai al Carrello');
+        $main -> setContent("Link_tasto_1",'');
+        $main -> setContent("Tasto_2","Procedi All' Ordine");
+        $main -> setContent("Link_tasto_2",'');
     }
 ?>

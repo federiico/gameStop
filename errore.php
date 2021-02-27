@@ -4,7 +4,7 @@
 	require "include/template.inc.php";
     
     require "component/common-frame.comp.php";
-
+    
     require "component/errore.comp.php";
     
     $main->setContent("body", $body->get());
