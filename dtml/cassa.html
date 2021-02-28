@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">   
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.php">Homepage</a></li>
+                            <li>Cassa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>         
+    </div>
+    <!--breadcrumbs area end-->
+    
+    <!--Checkout page section-->
+    <div class="Checkout_section mt-60">
+       <div class="container">
+            <div class="checkout_form">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <form method="GET" action="#">
+                            <h3>Dettagli Spedizione:</h3>
+                            <div class="row">
+
+                                <div class="col-lg-6 mb-20">
+                                    <label>Nome:<span>*</span></label>
+                                    <input type="text">    
+                                </div>
+                                <div class="col-lg-6 mb-20">
+                                    <label>Cognome: <span>*</span></label>
+                                    <input type="text"> 
+                                </div>
+                                <div class="col-12 mb-20">
+                                    <label for="Indirizzo">Indirizzo: <span>*</span></label>
+                                    <select class="niceselect_option" name="cuntry" id="country"> 
+                                        
+                                            <option value="2"><[indirizzo]></option>
+
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-20">
+                                    <label for="country">Seleziona Carta di Credito: <span>*</span></label>
+                                    <select class="niceselect_option" name="cuntry" id="country"> 
+                                        <option value="2"><[Cartadicredito]></option>      
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-20">
+                                    <label for="country">Seleziona Modalità di Spedizione: <span>*</span></label>
+                                    <select class="niceselect_option" name="cuntry" id="country"> 
+                                            <option value=""><[Nome_Spedizione]></option>  
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <div class="order-notes">
+                                         <label for="order_note">Informazioni per la spedizione? </label>
+                                        <textarea id="order_note" placeholder="Informazioni per la spedizione? es. Terzo Piano ecc..."></textarea>
+                                    </div>    
+                                </div>     	    	    	    	    	    	    
+                            </div>   
+                    </div>
+                    <div class="col-lg-6 col-md-6">    
+                            <h3>Il tuo Ordine: </h3> 
+                            <div class="order_table table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Articolo</th>
+                                            <th>Totale</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <[foreach]>
+
+                                                <td> <[Nome_articolo]> <strong> × <[Quantita_articolo]></strong></td>
+                                                <td> <[Prezzo_articolo]> </td>
+
+                                            <[/foreach]>
+                                        </tr>
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Sub-Totale</th>
+                                            <td><[Totale_Articoli]></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Spedizione</th>
+                                            <td><strong><[Prezzo_spedizione]></strong></td>
+                                        </tr>
+                                        <tr class="order_total">
+                                            <th>Totale ordine</th>
+                                            <td><strong><[Totale]></strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>     
+                            </div>
+                            <div class="payment_method"> 
+                               <div class="panel-default">
+                                <div class="order_button">
+                                    <button  type="submit" style="float: right;">Procedi al pagamento</button> 
+                                </div>    
+                            </div> 
+                        </form>         
+                    </div>
+                </div> 
+            </div> 
+        </div>       
+    </div>
+    <!--Checkout page section end-->
+
+<!-- JS
+============================================ -->
+
+<!-- Plugins JS -->
+<script src="assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>

@@ -50,7 +50,7 @@
                         $main -> setContent("Tasto_1",'Vai al Carrello');
                         $main -> setContent("Link_Tasto_1",'carrello.php');
                         $main -> setContent("Tasto_2","Procedi All' Ordine");
-                        $main -> setContent("Link_Tasto_2",'');
+                        $main -> setContent("Link_Tasto_2",'cassa.php');
                 }else{
                         $main -> setContent("hidden",'hidden');
                         $main -> setContent("Totale_Carrello",'0 €');
@@ -58,7 +58,7 @@
                         $main -> setContent("Tasto_1",'Vai al Carrello');
                         $main -> setContent("Link_Tasto_1",'carrello.php');
                         $main -> setContent("Tasto_2","Procedi All' Ordine");
-                        $main -> setContent("Link_Tasto_2",'');
+                        $main -> setContent("Link_Tasto_2",'cassa.php');
                 }
     }
 ?>

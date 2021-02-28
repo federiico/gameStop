@@ -4,7 +4,7 @@
 
     if($autenticazione){
 
-        $body = new Template("dtml/shop-fullwidth.html"); 		// sottotemplate per la home
+        $body = new Template("dtml/shop-page.html"); 		// sottotemplate per la home
         
         $console=$_GET['console'];
         $categoria=$_GET['categoria'];
