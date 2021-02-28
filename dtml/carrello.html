@@ -64,14 +64,14 @@
                                     
                                         <[foreach]>
                                         <tr>
-                                            <td class="product_remove"><a href="gestione_carrello.php$azione=del"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class="product_remove"><a href="gestione_carrello.php?azione=del&gioco=<[Id_prodotto]>"><i class="fa fa-trash-o"></i></a></td>
                                             <td class="product_thumb"><a href="<[Link_articolo_Carrello]>"><img src="<[Immagine_articolo_Carrello]>" alt=""></a></td>
                                             <td class="product_name"><a href="<[Link_articolo_Carrello]>"><[Nome_articolo_Carrello]></a></td>
                                             <td class="product-price"> <[Prezzo_articolo_Carrello]> </td>
-                                            <td class="product_quantity"><label><[Quantità_articolo_Carrello]></label> <input min="1" max="10" value="1" type="number"></td>
+                                            <td class="product_quantity"><label></label><[Quantità_articolo_Carrello]></td>
+                                            <td class="product-price"> <[Prezzo_articolo_Carrelloxqta]> </td>
                                         </tr>
                                         <[/foreach]>
-                                        <td class="product_total"><[Prezzo_totale_Carrello]></td>
                                     
                             </tbody>
                         </table>   
@@ -87,14 +87,10 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="coupon_code right">
-                                <h3>Cart Totals</h3>
+                                <h3>Prezzo Totale</h3>
                                 <div class="coupon_inner">
                                    <div class="cart_subtotal">
-                                       <p>Subtotal</p>
-                                       <p class="cart_amount"><[Prezzo_totale_Carrello]></p>
-                                   </div>
-                                   <div class="cart_subtotal">
-                                       <p>Total</p>
+                                       <p>Totale</p>
                                        <p class="cart_amount"><[Prezzo_totale_Carrello]></p>
                                    </div>
                                    <div class="checkout_btn">
@@ -110,104 +106,6 @@
         </div>     
     </div>
      <!--shopping cart area end -->
-    
-      <!--footer area start-->
-    <footer class="footer_widgets">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="widgets_container contact_us">
-                        <div class="footer_logo">
-                            <a href="#"><img src="assets/img/logo/logo.png" alt=""></a>
-                        </div>
-                        <div class="footer_contact">
-                            <p>We are a team of designers and developers that 
-                                create high quality HTML Template, Woocommerce, Shopify Theme.</p>
-                            <p><span>Address</span> The Barn, Ullenhall, Henley in Arden B578 5C, England.</p>
-                            <p><span>Mobile: </span><a href="tel:+123.456.789">+123.456.789</a>  – <a href="tel:+123.456.678">+123.456.678</a> </p>
-                            <p><span>Support: </span><a target="_blank" href="https://hasthemes.com/contact-us/">https://hasthemes.com/contact-us/</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="widgets_container widget_menu">
-                        <h3>Information</h3>
-                        <div class="footer_menu">
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="blog.html">Delivery Information</a></li>
-                                <li><a href="contact.html">Privacy Policy</a></li>
-                                <li><a href="services.html">Terms & Conditions</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Gift Certificates</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="widgets_container widget_menu">
-                        <h3>My Account</h3>
-                        <div class="footer_menu">
-                            <ul>
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Order History</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="#">Newsletter</a></li>
-                                <li><a href="#">Affiliate</a></li>
-                                <li><a href="faq.html">International Orders</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                   <div class="widgets_container newsletter">
-                        <h3>Follow Us</h3>
-                        <div class="footer_social_link">
-                            <ul>
-                                <li><a class="facebook" href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="instagram" href="#" title="instagram"><i class="fa fa-instagram"></i></a></li>
-                                <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="rss" href="#" title="rss"><i class="fa fa-rss"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="subscribe_form">
-                           <h3>Join Our Newsletter Now</h3>
-                            <form id="mc-form" class="mc-form footer-newsletter" >
-                                <input id="mc-email" type="email" autocomplete="off" placeholder="Your email address..." />
-                                <button id="mc-submit">Subscribe!</button>
-                            </form>
-                            <!-- mailchimp-alerts Start -->
-                            <div class="mailchimp-alerts text-centre">
-                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                            </div><!-- mailchimp-alerts end -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="footer_bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="copyright_area">
-                            <p>Copyright &copy; 2019 <a href="#">Junko</a>  All Right Reserved.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="footer_payment text-right">
-                            <a href="#"><img src="assets/img/icon/payment.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>   
-    </footer>
-    <!--footer area end-->
 
 <!-- JS
 ============================================ -->

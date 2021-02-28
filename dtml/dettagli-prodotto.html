@@ -23,9 +23,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <div class="product_d_right">
-                       <form action="#">
-                           
+                    <div class="product_d_right">                           
                             <h1><[Nome_articolo]></h1>
 
                             <div class=" product_ratting">
@@ -41,10 +39,12 @@
                                 <span class="old_price"><[Prezzo_vecchio]></span>
                             </div>
                             <div class="product_variant quantity">
-                                <form method="GET" action="submit">
+                                <form method="GET" action="gestione_carrello.php">
                                     <label>Quantità</label>
-                                    <input min="1" max="100" value="1" type="number" id="quantita" name="quantita">
-                                    <button class="button" type="submit"><a href="gestione_carrello.php?gioco=<[Id_prodotto]>">Aggiungi al carrello</a></button>   
+                                    <input min="1" max="100" value="1" type="number" name="quantita">
+                                    <input type="hidden" name="gioco" value="<[Id_prodotto]>" />
+                                    <input type="hidden" name="azione" value="add" />
+                                    <button class="button" type="" >Aggiungi al carrello</button>   
                                 </form>  
                             </div>
                             

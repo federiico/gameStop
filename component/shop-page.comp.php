@@ -49,9 +49,10 @@
                         $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
                     }		
         }else{
-                //Shop by Console
+                //Shop by Console (Promo)
                 if((isset($console)) && is_null($nome)){
                     $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
+                    if($console == "promo") $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Sconto > 0 ORDER BY '".$ordine."' ".$verso."";
                     $result = $mysqli -> query($query);
                         while($gioco = $result -> fetch_assoc()){
 
@@ -156,32 +157,6 @@
                         $body -> setContent("conta", $conta['conta']);
             }
 
-            //Shop Promo
-
-            /*if((isset($promo)){
-                $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Sconto > '0'";
-                $result = $mysqli -> query($query);
-                    while($gioco = $result -> fetch_assoc()){
-        
-                        $body -> setContent("Immagine","getImage.php?Id_articolo=".$gioco['Id_articolo']);
-                        $body -> setContent("Nome_articolo",$gioco['Nome']);
-                        $body -> setContent("Descrizione_articolo",$gioco['Descrizione']);
-            
-                        if($gioco['Sconto'] > 0){
-                        $body -> setContent("Offerta","Offerta");
-                        $nuovoPrezzo = ($gioco['Prezzo'] - (($gioco['Prezzo'] / 100) * $gioco['Sconto'])); //prezzo scontato
-                        $nuovoPrezzo = number_format((float)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
-                        $body -> setContent("Vecchio_prezzo","€ ".$gioco['Prezzo']);
-                        $body -> setContent("Prezzo_corrente","€ ".$nuovoPrezzo);
-                        }
-                        else $body -> setContent("Prezzo_corrente","€ ".$gioco['Prezzo']);
-            
-                        $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
-                        $body -> setContent("conta", $query['conta']);
-            
-                        }
-                        $body -> setContent("conta", $conta['conta']);
-            }*/
     } 
     else header("Location: errore.php");
 

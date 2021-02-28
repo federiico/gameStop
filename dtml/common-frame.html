@@ -86,22 +86,26 @@
                                         <span class="cart_quantity"><[Quantità_Carrello]></span>
                                         <!--mini cart-->
                                         <div class="mini_cart">
-                                            <!--mini cart_ element--> 
-                                            <div class="cart_item" <[hidden]> >
-                                               <div class="cart_img">
-                                                   <a href="<[Link_prodotto_Carrello]>"><img src="<[Immagine_Carrello]>" alt=""></a>
-                                               </div>
-                                                <div class="cart_info">
-                                                    <a href="<[Link_prodotto_Carrello]>"><[Nome_articolo_Carrello]></a>
-                                                    <p><[Quantita_carrello_prodotto]><span>  </span></p>    
+                                            <!--mini cart_ element-->
+                                            
+                                                <div class="cart_item" <[hidden]>>
+                                                    <div class="cart_img">
+                                                        <a href="<[Link_articolo_Carrello]>"><img src="<[Immagine_Carrello]>" alt=""></a>
+                                                    </div>
+                                                    <div class="cart_info">
+                                                        <a href="<[Link_articolo_Carrello]>"><[Nome_articolo_Carrello]></a>
+                                                        <p>Quantita: <[Quantita_carrello_prodotto]><span> </span></p>    
+                                                    </div>
+                                                    <div class="cart_info">
+                                                        <p><[Prezzo_articolo_Carrello]><span>  </span></p>    
+                                                    </div>
+                                                    <div class="cart_remove" <[hidden]>>
+                                                        <a href="gestione_carrello.php?gioco=<[Id_prodotto]>&azione=del"><i class="ion-android-close"></i></a>
+                                                    </div>
                                                 </div>
-                                                <div class="cart_remove"  <[hidden]>>
-                                                    <a href="gestione_carrello.php?prodotto=<[ID_prodotto]>&azione=del"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
                                             <!--mini cart_ tendina-->
                                             <div class="mini_cart_table">
-                                                <div class="cart_total">
+                                                <div class="cart_total" >
                                                     <span>Totale:</span>
                                                     <span class="price"><[Totale_Carrello]></span>
                                                 </div>
@@ -114,9 +118,8 @@
                                                 <div class="cart_button">
                                                     <a href="<[Link_Tasto_2]>"><[Tasto_2]></a>
                                                 </div>
-        
                                             </div>
-        
+                                        </div>
                                         </div>
                                         <!--mini cart end-->
                                     </div>
@@ -222,7 +225,7 @@
                                         <li><a href="shop-page.php?console=XboxOne">Xbox One</a> </li>
                                         <li><a href="shop-page.php?console=NintendoSwitch">Nintendo Switch</a></li>
                                         <li><a href="shop-page.php?console=Pc">Pc</a></li>
-                                        <li><a href="shop-page.php?promo=y">Promo</a></li>
+                                        <li><a href="shop-page.php?console=promo">Promo</a></li>
                                     </ul>  
                                 </nav> 
                             </div>
@@ -265,22 +268,26 @@
                                 <!--mini cart-->
                                  <div class="mini_cart">
                                     <!--mini cart_ element--> 
-                                
-                                    <div class="cart_item">
+                                <!--Manca il foreach perchè non funziona-->
+                                    <div class="cart_item" <[hidden]>>
                                        <div class="cart_img">
                                            <a href="<[Link_prodotto_Carrello]>"><img src="<[Immagine_Carrello]>" alt=""></a>
                                        </div>
                                         <div class="cart_info">
                                             <a href="<[Link_prodotto_Carrello]>"><[Nome_articolo_Carrello]></a>
-                                            <p><[Quantita_carrello_prodotto]><span>  </span></p>    
+                                            <p>Quantita: <[Quantita_carrello_prodotto]><span>  </span></p>    
                                         </div>
-                                        <div class="cart_remove">
-                                            <a href="gestione_carrello.php?prodotto=<[ID_prodotto]>"><i class="ion-android-close"></i></a>
+                                        <div class="cart_info">
+                                            <p><[Prezzo_articolo_Carrello]><span>  </span></p>    
+                                        </div>
+                                        <div class="cart_remove" <[hidden]>>
+                                            <a href="gestione_carrello.php?gioco=<[Id_prodotto]>&azione=del"><i class="ion-android-close"></i></a>
                                         </div>
                                     </div>
+                                
                                     <!--mini cart_ tendina-->
                                     <div class="mini_cart_table">
-                                        <div class="cart_total">
+                                        <div class="cart_total"  >
                                             <span>Totale:</span>
                                             <span class="price"><[Totale_Carrello]></span>
                                         </div>
