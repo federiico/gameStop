@@ -39,6 +39,7 @@
                     else $pagamento = $pagamento.$ordine['Numero'][$i];
                 }
                 $body -> setContent("Pagamento", $pagamento);
+
     
             }
         }

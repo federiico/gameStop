@@ -4,7 +4,7 @@
 
     if($autenticazione){
 
-        $body = new Template("dtml/aggiungi-indirizzo.html");
+        $body = new Template("dtml/aggiungi-modalita.html");
 
       
 

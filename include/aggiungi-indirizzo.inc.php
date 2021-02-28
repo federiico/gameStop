@@ -2,6 +2,8 @@
 
     require "dbms.inc.php";
 
+    session_start();
+
     $nome = $_POST['Nome'];
     $cognome = $_POST['Cognome'];
     $telefono = $_POST['Telefono'];
@@ -23,25 +25,20 @@
         
         if( $mysqli -> query($query) == true){
 
-            $checkQuery = true;
-        }
-
-        if($checkQuery){
-
-            $query2 = "SELECT MAX(Id_spedizione) AS lastId FROM Indirizzo_spedizione";
-
-            $result = $mysqli -> query($query2);
-
+            $query = "SELECT MAX(Id_spedizione) AS lastId FROM Indirizzo_spedizione";
+    
+            $result = $mysqli -> query($query);
+    
             $ris = $result -> fetch_assoc();
-
+    
             $id_spedizione = $ris['lastId'];
            
-
-            $query3 = "INSERT INTO Utente_spedizione (Id_utente,Id_spedizione) 
+    
+            $query = "INSERT INTO Utente_spedizione (Id_utente,Id_spedizione) 
                         VALUES ('".$_SESSION['Id_utente']."','".$id_spedizione."')";
 
             
-            if($mysqli -> query($query3) == true){
+            if($mysqli -> query($query) == true){
                 
                 header("Location: ../my-account.php");
             }

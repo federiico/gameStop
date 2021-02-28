@@ -4,6 +4,7 @@
 
     if($autenticazione){
 
+
         $body = new Template("dtml/my-account.html");
 
         //------INIZIO DETTAGLI UTENTE-------
@@ -108,9 +109,53 @@
 
         if( isset($_GET['Error']) ){
             if( $_GET['Error'] == "address_error")
-                $body -> setContent("Messaggio_errore", "Impossibile eliminare l'indirizzo, è associato ad un ordine.");
-            else $body -> setContent("Messaggio_errore", "");
-        }else $body -> setContent("Messaggio_errore", "");
+                $body -> setContent("Messaggio_errore_indirizzi", "L'indirizzo è associato ad un ordine, impossibile eliminarlo.");  
+        }
+        //--------FINE INDIRIZZI----------
+
+
+        //--------INIZIO PAGAMENTI--------
+        $query = "SELECT Modalita_pagamento.Id, Nominativo, Circuito, Numero, DAY(Data_scadenza) AS Giorno, MONTH(Data_scadenza) AS Mese, 
+                  YEAR(Data_scadenza) AS Anno, Nome, Cognome, Telefono, Indirizzo, Stato, Provincia, Citta, CAP
+                  FROM Modalita_pagamento,Indirizzo_fatturazione,Modalita_fatturazione,Utente_modalita 
+                  WHERE Modalita_pagamento.Id = Modalita_fatturazione.Id_modalita 
+                  AND Indirizzo_fatturazione.Id_fatturazione = Modalita_fatturazione.Id_indirizzo 
+                  AND Modalita_pagamento.id = Utente_modalita.Id_modalita 
+                  AND Utente_modalita.Id_utente ='".$_SESSION['Id_utente']."' ";
+
+        $result = $mysqli -> query($query);
+
+        while($pagamento = $result -> fetch_assoc()){
+
+            $body -> setContent("Nominativo", $pagamento['Nominativo']);
+            $body -> setContent("Circuito", $pagamento['Circuito']);
+            
+            $numero = "";
+            for($i = 0; $i < 16; $i++){
+                if($i < 12)
+                    $numero = $numero."*";
+                else $numero = $numero.$pagamento['Numero'][$i];
+            }
+            $body -> setContent("Numero", $numero);
+
+            $data = $pagamento['Giorno']."/".$pagamento['Mese']."/".$pagamento['Anno'];
+
+            $body -> setContent("Scadenza", $data);
+
+            $fatturazione = $pagamento['Cognome']." ".$pagamento['Nome']."<br>".$pagamento['Telefono']."<br>".
+                            $pagamento['Indirizzo']."<br>".$pagamento['Citta']." (".$pagamento['CAP']."), "
+                            .$pagamento['Provincia']."<br>".$pagamento['Stato'];
+
+            $body -> setContent("Fatturazione", $fatturazione);
+
+            $body -> setContent("Link_elimina_modalita", "include/elimina_modalita.inc.php?Id_modalita=".$pagamento['Id']);
+
+            if( isset($_GET['Error']) ){
+                if( $_GET['Error'] == "payment_error")
+                    $body -> setContent("Messaggio_errore_pagamenti", "La modalità di pagamento è associata ad un ordine, impossibile eliminarla.");  
+            }
+
+        }
 
 
         
