@@ -7,7 +7,7 @@
             $body = new Template("dtml/homepage.html"); 
 
             //---------INIZIO PS4----------
-            $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo WHERE Piattaforma = 'Playstation 4'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'Playstation 4'";
             $result = $mysqli -> query($query);
             
             while($giocoPS4 = $result -> fetch_assoc()){
@@ -29,14 +29,21 @@
                     $body -> setContent("Vecchio_prezzo_PS4","");
                     $body -> setContent("Prezzo_corrente_PS4","€ ".$giocoPS4['Prezzo']);
                 }
-                $body -> setContent("Link_prodotto_PS4","dettagli-prodotto.php?Id_articolo=".$giocoPS4['Id_articolo']);
+                if($giocoPS4['Disponibilita'] == 0){
+                    $body -> setContent("Aggiungi_PS4","Prodotto esaurito");
+                    $body -> setContent("Link_carrello_ps4","");
 
+                }else{
+                    $body -> setContent("Link_carrello_ps4","gestione_carrello.php?gioco=".$giocoPS4['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Aggiungi_PS4","Aggiungi al carrello");
+                }
+                $body -> setContent("Link_prodotto_PS4","dettagli-prodotto.php?Id_articolo=".$giocoPS4['Id_articolo']);
             }
             //--------FINE PS4------------
 
 
             //-------INIZIO XBOX----------
-            $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo WHERE Piattaforma = 'Xbox One'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'Xbox One'";
             $result = $mysqli -> query($query);
             
             while($giocoXbox = $result -> fetch_assoc()){
@@ -58,6 +65,14 @@
                     $body -> setContent("Vecchio_prezzo_Xbox","");
                     $body -> setContent("Prezzo_corrente_Xbox","€ ".$giocoXbox['Prezzo']);
                 }
+                if($giocoXbox['Disponibilita'] == 0){
+                    $body -> setContent("Aggiungi_Xbox","Prodotto esaurito");
+                    $body -> setContent("Link_carrello_Xbox","");
+
+                }else{
+                    $body -> setContent("Link_carrello_Xbox","gestione_carrello.php?gioco=".$giocoXbox['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Aggiungi_Xbox","Aggiungi al carrello");
+                }
                 $body -> setContent("Link_prodotto_Xbox","dettagli-prodotto.php?Id_articolo=".$giocoXbox['Id_articolo']);
             }
             //---------FINE XBOX---------
@@ -65,7 +80,7 @@
 
 
             //--------INIZIO NINTENDO--------
-            $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo WHERE Piattaforma = 'Nintendo Switch'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'Nintendo Switch'";
             $result = $mysqli -> query($query);
             
             while($giocoNintendo = $result -> fetch_assoc()){
@@ -87,13 +102,21 @@
                     $body -> setContent("Vecchio_prezzo_Nintendo","");
                     $body -> setContent("Prezzo_corrente_Nintendo","€ ".$giocoNintendo['Prezzo']);
                 }
+                if($giocoNintendo['Disponibilita'] == 0){
+                    $body -> setContent("Aggiungi_Nintendo","Prodotto esaurito");
+                    $body -> setContent("Link_carrello_Nintendo","");
+
+                }else{
+                    $body -> setContent("Link_carrello_Nintendo","gestione_carrello.php?gioco=".$giocoNintendo['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Aggiungi_Nintendo","Aggiungi al carrello");
+                }
                 $body -> setContent("Link_prodotto_Nintendo","dettagli-prodotto.php?Id_articolo=".$giocoNintendo['Id_articolo']);
             }
             //-------FINE NINTENDO---------
 
         
             //-------INIZIO PC---------
-            $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo WHERE Piattaforma = 'Pc'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'PC'";
             $result = $mysqli -> query($query);
             
             while($giocoPc = $result -> fetch_assoc()){
@@ -114,6 +137,14 @@
                     $body -> setContent("Offerta_Pc","");
                     $body -> setContent("Vecchio_prezzo_Pc","");
                     $body -> setContent("Prezzo_corrente_Pc","€ ".$giocoPc['Prezzo']);
+                }
+                if($giocoPc['Disponibilita'] == 0){
+                    $body -> setContent("Aggiungi_Pc","Prodotto esaurito");
+                    $body -> setContent("Link_carrello_Pc","");
+
+                }else{
+                    $body -> setContent("Link_carrello_Pc","gestione_carrello.php?gioco=".$giocoPc['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Aggiungi_Pc","Aggiungi al carrello");
                 }
                 $body -> setContent("Link_prodotto_Pc","dettagli-prodotto.php?Id_articolo=".$giocoPc['Id_articolo']);
             }

@@ -59,6 +59,7 @@
                             $body -> setContent("Immagine","getImage.php?Id_articolo=".$gioco['Id_articolo']);
                             $body -> setContent("Nome_articolo",$gioco['Nome']);
                             $body -> setContent("Descrizione_articolo",$gioco['Descrizione']);
+                            $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
 
                             if($gioco['Sconto'] > 0){
 
@@ -85,6 +86,7 @@
                             $body -> setContent("Immagine","getImage.php?Id_articolo=".$gioco['Id_articolo']);
                             $body -> setContent("Nome_articolo",$gioco['Nome']);
                             $body -> setContent("Descrizione_articolo",$gioco['Descrizione']);
+                            $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
 
                             if($gioco['Sconto'] > 0){
 
@@ -110,6 +112,7 @@
                         $body -> setContent("Immagine","getImage.php?Id_articolo=".$gioco['Id_articolo']);
                         $body -> setContent("Nome_articolo",$gioco['Nome']);
                         $body -> setContent("Descrizione_articolo",$gioco['Descrizione']);
+                        $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
 
                         if($gioco['Sconto'] > 0){
 
@@ -139,6 +142,7 @@
                         $body -> setContent("Immagine","getImage.php?Id_articolo=".$gioco['Id_articolo']);
                         $body -> setContent("Nome_articolo",$gioco['Nome']);
                         $body -> setContent("Descrizione_articolo",$gioco['Descrizione']);
+                        $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
             
                         if($gioco['Sconto'] > 0){
             

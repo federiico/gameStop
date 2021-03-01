@@ -5,6 +5,7 @@
     $page = $_SERVER["HTTP_REFERER"];
     $gioco = $_GET["gioco"];
     $azione = $_GET["azione"];
+    $aggiunto = null;
 
     if(isset($_SESSION['Id_utente'])){  
 
@@ -38,7 +39,7 @@
                         unset( $carrello['Id_articolo'] );
                     } 
                 }
-                header("Location: $page");
+               header("Location: $page");
             }
         }
 

@@ -5,6 +5,9 @@
         
 
         session_start();
+        $quantitatotale=0;
+        $errore=$_REQUEST["errore"];
+        if(isset($errore)) $body -> setContent("errore","CAMPI MANCANTI");
 
         //DETTAGLI SPEDIZIONE
         //Modalita spedizione
@@ -79,6 +82,8 @@
         $prezzofinale=$prezzototale + 0 ;
 
         $body -> setContent("Totale","€ ".$prezzofinale);
+
+        if( $quantitatotale == 0 ) header('Location: carrello_vuoto.php');
 
 
 ?>
