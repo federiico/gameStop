@@ -40,7 +40,8 @@
                         $main -> setContent("Prezzo_articolo_Carrello","€ ".$gioco['Prezzo']);
                         $totprezzo=$gioco ['Prezzo'] * $Id_gioco['quantita'];
                         $prezzototale=$totprezzo+$prezzototale;
-                        $numeroprodotti = $Id_gioco['quantita'] + $numeroprodotti;               }
+                        $numeroprodotti = $Id_gioco['quantita'] + $numeroprodotti;               
+                    }
                     
                 }
             

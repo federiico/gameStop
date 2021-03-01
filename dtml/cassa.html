@@ -24,41 +24,45 @@
             <div class="checkout_form">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <form method="GET" action="#">
+                        <form method="GET" action="prova.php">
                             <h3>Dettagli Spedizione:</h3>
                             <div class="row">
 
                                 <div class="col-lg-6 mb-20">
                                     <label>Nome:<span>*</span></label>
-                                    <input type="text">    
+                                    <input type="text" name="nome" id="nome">    
                                 </div>
                                 <div class="col-lg-6 mb-20">
                                     <label>Cognome: <span>*</span></label>
-                                    <input type="text"> 
+                                    <input type="text" name="cognome" id="cognome"> 
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="Indirizzo">Indirizzo: <span>*</span></label>
-                                    <select class="niceselect_option" name="cuntry" id="country"> 
-                                        
-                                            <option value="2"><[indirizzo]></option>
-
+                                    <select class="niceselect_option" name="indirizzo" id="country"> 
+                                        <[foreach]>
+                                            <option value="<[Id_indirizzo]>"><[indirizzo]></option >
+                                        <[/foreach]>
                                     </select>
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="country">Seleziona Carta di Credito: <span>*</span></label>
-                                    <select class="niceselect_option" name="cuntry" id="country"> 
-                                        <option value="2"><[Cartadicredito]></option>      
+                                    <select class="niceselect_option" name="carta" id="country"> 
+                                        <[foreach]>
+                                            <option value="<[Id_Cartadicredito]>"><[Cartadicredito]></option>      
+                                        <[/foreach]>
                                     </select>
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="country">Seleziona Modalità di Spedizione: <span>*</span></label>
-                                    <select class="niceselect_option" name="cuntry" id="country"> 
-                                            <option value=""><[Nome_Spedizione]></option>  
+                                    <select class="niceselect_option" name="sped" id="country">
+                                        <[foreach]>
+                                            <option value="<[Id_spedizione]>"><[Nome_Spedizione]></option>  
+                                        <[/foreach]>
                                     </select>
                                 </div>
                                 <div class="col-12">
                                     <div class="order-notes">
-                                         <label for="order_note">Informazioni per la spedizione? </label>
+                                        <label for="order_note">Informazioni per la spedizione? </label>
                                         <textarea id="order_note" placeholder="Informazioni per la spedizione? es. Terzo Piano ecc..."></textarea>
                                     </div>    
                                 </div>     	    	    	    	    	    	    
@@ -75,16 +79,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                    <[foreach]>
                                         <tr>
-                                            <[foreach]>
-
-                                                <td> <[Nome_articolo]> <strong> × <[Quantita_articolo]></strong></td>
+                                                <td><a href="<[Link_articolo]>"> <[Nome_articolo]> ( <[Console_articolo]> ) <strong> × <[Quantità_articolo]></strong></td>
                                                 <td> <[Prezzo_articolo]> </td>
-
-                                            <[/foreach]>
                                         </tr>
-
+                                    <[/foreach]>
                                     </tbody>
                                     <tfoot>
                                         <tr>
