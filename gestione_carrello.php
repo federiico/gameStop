@@ -13,11 +13,12 @@
             $quantita = $_GET["quantita"];
             foreach ($_SESSION['Carrello'] as &$carrello) {
 
-                if($carrello['Id_articolo']==$gioco){
+                if($carrello['Id_articolo'] == $gioco){
                     
                     $carrello['quantita']=$carrello['quantita'] + $quantita;
                     $aggiunto = 1;
                 }
+            
             }
                 if($carrello['Id_articolo']!=$gioco && $aggiunto != 1){
 

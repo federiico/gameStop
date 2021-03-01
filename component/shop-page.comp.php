@@ -2,6 +2,8 @@
 
     require "include/auth.inc.php";
 
+    $page = $_SERVER['SCRIPT_FILENAME'];
+
     if($autenticazione){
 
         $body = new Template("dtml/shop-page.html"); 		// sottotemplate per la home
@@ -25,7 +27,7 @@
         if((isset($console) && isset($categoria))){
                 //Shop by Console+Category
                 $body->setContent("NomeCategoria",$verso);
-                $query ="SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Genere = '".$categoria."' AND Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
+                $query ="SELECT a.Id_articolo as Id_articolo ,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Genere = '".$categoria."' AND Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
                 $result = $mysqli -> query($query);
             
                     while($gioco = $result -> fetch_assoc()){
@@ -46,13 +48,26 @@
                         }
                         else $body -> setContent("Prezzo_corrente","€ ".$gioco['Prezzo']);
 
+                        if( $gioco['disponibilita'] == 0){
+
+                            $body -> setContent("Aggiungi","Prodotto esaurito");
+                            $body -> setContent("Link_Carrello",$page);
+                
+                        }else{
+                
+                            $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                            $body -> setContent("Aggiungi","Aggiungi al carrello");
+                        }
+
+                        //gestione_carrello.php?gioco=<[Id_prodotto]>&quantita=1&azione=add
+
                         $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
                     }		
         }else{
                 //Shop by Console (Promo)
                 if((isset($console)) && is_null($nome)){
-                    $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
-                    if($console == "promo") $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Sconto > 0 ORDER BY '".$ordine."' ".$verso."";
+                    $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
+                    if($console == "promo") $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Sconto > 0 ORDER BY '".$ordine."' ".$verso."";
                     $result = $mysqli -> query($query);
                         while($gioco = $result -> fetch_assoc()){
 
@@ -71,6 +86,17 @@
                             }
                             else $body -> setContent("Prezzo_corrente","€ ".$gioco['Prezzo']);
 
+                            if( $gioco['disponibilita'] == 0){
+
+                                $body -> setContent("Aggiungi","Prodotto esaurito");
+                                $body -> setContent("Link_Carrello",$page);
+                    
+                            }else{
+                    
+                                $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                                $body -> setContent("Aggiungi","Aggiungi al carrello");
+                            }
+
                             $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
 
                         }
@@ -78,7 +104,7 @@
                 }
                 //Shop by Category
                 if((isset($categoria))){
-                    $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Genere = '".$categoria."' ORDER BY '".$ordine."' ".$verso."";
+                    $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Genere = '".$categoria."' ORDER BY '".$ordine."' ".$verso."";
                     $result = $mysqli -> query($query);
                 
                         while($gioco = $result -> fetch_assoc()){
@@ -98,6 +124,17 @@
                             }
                             else $body -> setContent("Prezzo_corrente","€ ".$gioco['Prezzo']);
 
+                            if( $gioco['disponibilita'] == 0){
+
+                                $body -> setContent("Aggiungi","Prodotto esaurito");
+                                $body -> setContent("Link_Carrello",$page);
+                    
+                            }else{
+                    
+                                $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                                $body -> setContent("Aggiungi","Aggiungi al carrello");
+                            }
+
                             $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
                         }		
                 }
@@ -105,7 +142,7 @@
             //Shop By name + console
             
             if((isset($nome)) && isset($console)){
-                $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE (Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%') AND Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
+                $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE (Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%') AND Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
                 $result = $mysqli -> query($query);
                     while($gioco = $result -> fetch_assoc()){
 
@@ -124,6 +161,17 @@
                         }
                         else $body -> setContent("Prezzo_corrente","€ ".$gioco['Prezzo']);
 
+                        if( $gioco['disponibilita'] == 0){
+
+                            $body -> setContent("Aggiungi","Prodotto esaurito");
+                            $body -> setContent("Link_Carrello",$page);
+                
+                        }else{
+                
+                            $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                            $body -> setContent("Aggiungi","Aggiungi al carrello");
+                        }
+
                         $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
                         $body -> setContent("conta", $query['conta']);
 
@@ -135,7 +183,7 @@
             //Shop By name
 
             if((isset($nome)) && $console=="1" ){
-                $query = "SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%' ORDER BY '".$ordine."' ".$verso."";
+                $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%' ORDER BY '".$ordine."' ".$verso."";
                 $result = $mysqli -> query($query);
                     while($gioco = $result -> fetch_assoc()){
         
@@ -156,9 +204,20 @@
             
                         $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
                         $body -> setContent("conta", $query['conta']);
-            
+                        if( $gioco['disponibilita'] == 0){
+
+                            $body -> setContent("Aggiungi","Prodotto esaurito");
+                            $body -> setContent("Link_Carrello",$page);
+                
+                        }else{
+                
+                            $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                            $body -> setContent("Aggiungi","Aggiungi al carrello");
                         }
-                        $body -> setContent("conta", $conta['conta']);
+                        }
+
+                       
+                        
             }
 
     } 
