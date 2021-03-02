@@ -250,6 +250,8 @@
                        
                         
             }
+            
+            if(($mysqli -> affected_rows) == 0 ) header("Location: ricerca_vuota.php");
 
     } 
     else header("Location: errore.php");
