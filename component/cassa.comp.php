@@ -26,7 +26,7 @@
             $query_carta ="SELECT Id,SUBSTRING(Numero, 1, 4) AS Inizio , SUBSTRING(Numero, 12, 4) AS Fine , MONTH(Data_scadenza) AS Mese, SUBSTRING(YEAR(Data_scadenza),3,4) AS Anno FROM modalita_pagamento WHERE Id='".$_SESSION["Id_utente"]."'";
             $result_carta = $mysqli -> query($query_carta);
             while($carta = $result_carta -> fetch_assoc()){
-                $body -> setContent("Id_carta",$carta['Id']);
+                $body -> setContent("Id_Cartadicredito",$carta['Id']);
                 $body -> setContent("Cartadicredito",$carta['Inizio'].'-XXXX-XXXX-'.$carta['Fine'].', Scadenza: '.$carta['Mese'].'/'.$carta['Anno']);
             }
 

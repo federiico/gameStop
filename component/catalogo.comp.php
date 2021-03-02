@@ -16,6 +16,7 @@
 
                 $body -> setContent("Immagine_articolo","getImage.php?Id_articolo=".$gioco['Id_articolo']);
                 $body -> setContent("Link_articolo","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
+                $body -> setContent("Id_articolo", $gioco['Id_articolo']);
 
                 $body -> setContent("Nome_articolo", $gioco['Nome']);
 

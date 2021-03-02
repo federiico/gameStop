@@ -60,7 +60,7 @@
                 
                         }else{
                 
-                            $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                            $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
                             $body -> setContent("Aggiungi","Aggiungi al carrello");
                         }
 
@@ -104,7 +104,7 @@
                     
                             }else{
                     
-                                $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                                $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
                                 $body -> setContent("Aggiungi","Aggiungi al carrello");
                             }
 
@@ -147,7 +147,7 @@
                     
                             }else{
                     
-                                $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                                $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
                                 $body -> setContent("Aggiungi","Aggiungi al carrello");
                             }
 
@@ -189,7 +189,7 @@
                 
                         }else{
                 
-                            $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                            $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
                             $body -> setContent("Aggiungi","Aggiungi al carrello");
                         }
 
@@ -237,7 +237,7 @@
                 
                         }else{
                 
-                            $body -> setContent("Link_Carrello","gestione_carrello.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
+                            $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."gioco=&quantita=1&azione=add");
                             $body -> setContent("Aggiungi","Aggiungi al carrello");
                         }
                         }
