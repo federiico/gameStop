@@ -78,7 +78,10 @@
                     AND Catalogo.Disponibilita=1
                     ORDER BY '".$ordine."' ".$verso."";
 
-                    if($console == "promo") $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Sconto > 0 ORDER BY '".$ordine."' ".$verso."";
+                    if($console == "promo") $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,d.disponibilita 
+                    FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                    JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                    WHERE Sconto > 0 AND Catalogo.Disponibilita=1 ORDER BY '".$ordine."' ".$verso."";
                     $result = $mysqli -> query($query);
                         while($gioco = $result -> fetch_assoc()){
 
@@ -207,10 +210,12 @@
                 $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,d.disponibilita 
                 FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
                 JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
-                WHERE Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%' 
-                AND Catalogo.Disponibilita=1
-                ORDER BY '".$ordine."' ".$verso."";
+                WHERE ( Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%') 
+                AND catalogo.Disponibilita = 1
+                ORDER BY '".$ordine."' ".$verso;
+
                 $result = $mysqli -> query($query);
+
                     while($gioco = $result -> fetch_assoc()){
         
                         $body -> setContent("Immagine","getImage.php?Id_articolo=".$gioco['Id_articolo']);
