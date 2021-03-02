@@ -29,6 +29,7 @@
             $body -> setContent("Anno_value",$i);
         }
     }
+    else header("Location: errore.php");
 
 
 ?>

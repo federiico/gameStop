@@ -14,6 +14,7 @@
                 $body -> setContent("Messaggio_errore", "Registrazione del nuovo indirizzo fallita: inserire tutti i campi richiesti.");
         }
     }
+    else header("Location: errore.php");
 
 
 ?>

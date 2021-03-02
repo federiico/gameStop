@@ -8,7 +8,8 @@
             $query = "SELECT Articolo.Id_articolo,Nome,Prezzo,Sconto 
                       FROM Articolo, Catalogo
                       WHERE Articolo.Id_articolo = Catalogo.Id_catalogo
-                      AND Catalogo.Disponibilita=1";
+                      AND Catalogo.Disponibilita=1
+                      ORDER BY Nome ASC";
 
             $result = $mysqli -> query($query);
 
@@ -36,6 +37,7 @@
                 $body -> setContent("Sconto", $gioco['Sconto']." %");
             }
         }
+        else header("Location: errore.php");
 
 ?>
             
