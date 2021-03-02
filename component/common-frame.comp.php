@@ -4,6 +4,7 @@
 
     session_start();
 
+
     if(!isset($_SESSION['Id_utente'])){
         $main -> setContent('MyAccount','Accedi');
         $main -> setContent('Link_MyAccount','login.php');
@@ -17,8 +18,13 @@
         $main -> setContent("Tasto_2",'Registrati');
         $main -> setContent("Link_Tasto_2",'registrazione.php');
         $main -> setContent("hidden",'hidden');
+        $main -> setContent("hiddenCatalogo","hidden");
     }
     else{
+
+        if($_SESSION['Gruppo'] != "Admin")
+            $main -> setContent("hiddenCatalogo","hidden");
+
         $main -> setContent('MyAccount','Il Mio Account');
         $main -> setContent('Link_MyAccount','my-account.php?activePage=info');
         $main -> setContent('Login-logout','Logout');

@@ -3,15 +3,15 @@
     require "include/auth.inc.php";
 
     $page = $_SERVER['SCRIPT_FILENAME'];
-
+    
     if($autenticazione){
 
         $body = new Template("dtml/dettagli-prodotto.html");
         $_SESSION['Id_articolo'] = $_GET['Id_articolo'];
         //-------INFO ARTICOLO---------
 
-        $query = "SELECT a.Id_articolo as Id_articolo , disponibilita, Nome, Anno, Piattaforma, Produttore, Casa_sviluppatrice, Classificazione, Genere, Lingua, Prezzo, Sconto, Descrizione 
-                    FROM Articolo as a JOIN disponibilita as d on ( a.Id_articolo = d.Id_articolo ) WHERE a.Id_articolo='".$_GET['Id_articolo']."'";
+        $query = "SELECT a.Id_articolo as Id_articolo , Disponibilita, Nome, Anno, Piattaforma, Produttore, 'Casa sviluppatrice', Classificazione, Genere, Lingua, Prezzo, Sconto, Descrizione 
+                    FROM Articolo as a JOIN Disponibilita as d on ( a.Id_articolo = d.Id_articolo ) WHERE a.Id_articolo='".$_GET['Id_articolo']."'";
 
         $result = $mysqli -> query($query);
 
@@ -39,10 +39,11 @@
         $body -> setContent("Nome_articolo",$gioco['Nome']);
         $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
 
-        if( $gioco['disponibilita'] == 0){
+        if( $gioco['Disponibilita'] == 0){
 
             $body -> setContent("Aggiungi","Prodotto esaurito");
-            $body -> setContent("Link_Carrello",$page);
+            $body -> setContent("Link_Carrello","");
+            $body -> setContent("disabled","disabled");
 
         }else{
 

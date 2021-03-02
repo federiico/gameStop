@@ -10,9 +10,11 @@
     }
     else{
 
-        $query = "SELECT Id_utente, Nome, Cognome, Telefono, Email, Password
-                FROM Utente 
-                WHERE Email ='".$email."' 
+        $query = "SELECT Utente.Id_utente, Utente.Nome AS NomeUtente, Cognome, Telefono, Email, Password, Gruppo.Nome AS NomeGruppo
+                FROM Utente, Gruppo, Gruppo_utente
+                WHERE Utente.Id_utente = Gruppo_utente.Id_utente
+                AND Gruppo.Id_gruppo = Gruppo_utente.Id_gruppo
+                AND Email ='".$email."' 
                 AND Password ='".$password."'";
         
         $result = $mysqli -> query($query);
@@ -26,11 +28,12 @@
             session_start();
             
             $_SESSION['Id_utente'] = $utente['Id_utente'];
-            $_SESSION['Nome'] = $utente['Nome'];
+            $_SESSION['Nome'] = $utente['NomeUtente'];
             $_SESSION['Cognome'] = $utente['Cognome'];
             $_SESSION['Telefono'] = $utente['Telefono'];
             $_SESSION['Email'] = $utente['Email'];
             $_SESSION['Password'] = $utente['Password'];
+            $_SESSION['Gruppo'] = $utente['NomeGruppo'];
 
             $_SERVER['Script'] = "homepage.php";
 

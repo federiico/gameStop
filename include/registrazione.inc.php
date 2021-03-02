@@ -33,6 +33,7 @@
                 $_SESSION['Telefono'] = $telefono;
                 $_SESSION['Email'] = $email;
                 $_SESSION['Password'] = $password;
+                $_SESSION['Gruppo'] = 'Cliente';
 
                 $_SERVER['Script'] = "homepage.php";
 

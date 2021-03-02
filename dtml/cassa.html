@@ -1,5 +1,3 @@
-<!doctype html>
-<html class="no-js" lang="en">
 
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
@@ -19,8 +17,7 @@
     <!--breadcrumbs area end-->
     
     <!--Checkout page section-->
-    <div class="Checkout_section mt-60">
-       <div class="container">
+    <div class="Checkout_section mt-60">       <div class="container">
             <div class="checkout_form">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
@@ -45,7 +42,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12 mb-20">
-                                    <label for="country">Seleziona Carta di Credito: <span>*</span></label>
+                                    <label for="country">Seleziona la carta di credito: <span>*</span></label>
                                     <select class="niceselect_option" name="carta" id="country"> 
                                         <[foreach]>
                                             <option value="<[Id_Cartadicredito]>"><[Cartadicredito]></option>      
@@ -53,7 +50,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12 mb-20">
-                                    <label for="country">Seleziona Modalità di Spedizione: <span>*</span></label>
+                                    <label for="country">Seleziona la modalità di spedizione: <span>*</span></label>
                                     <select class="niceselect_option" name="sped" id="country">
                                         <[foreach]>
                                             <option value="<[Id_spedizione]>"><[Nome_Spedizione]></option>  
@@ -63,12 +60,15 @@
                                 <div class="col-12">
                                     <div class="order-notes">
                                         <label for="order_note">Informazioni per la spedizione? </label>
-                                        <textarea id="order_note" placeholder="Informazioni per la spedizione? es. Terzo Piano ecc..."></textarea>
-                                    </div>    
-                                </div>     	    	    	    	    	    	    
+                                        <input type="text" id="order_note" placeholder="Informazioni per la spedizione? es. Terzo Piano ecc...">    
+                                    </div>  
+                                      
+                                </div> 
+                            	    	    	    	    	    
                             </div>   
                     </div>
-                    <div class="col-lg-6 col-md-6">    
+                    <div class="col-lg-6 col-md-6">  
+                             <p></p>  
                             <h3>Il tuo Ordine: </h3> 
                             <div class="order_table table-responsive">
                                 <table>
@@ -115,18 +115,3 @@
         </div>       
     </div>
     <!--Checkout page section end-->
-
-<!-- JS
-============================================ -->
-
-<!-- Plugins JS -->
-<script src="assets/js/plugins.js"></script>
-
-<!-- Main JS -->
-<script src="assets/js/main.js"></script>
-
-
-
-</body>
-
-</html>

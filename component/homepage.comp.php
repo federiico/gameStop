@@ -7,7 +7,11 @@
             $body = new Template("dtml/homepage.html"); 
 
             //---------INIZIO PS4----------
-            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'Playstation 4'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,d.Disponibilita 
+                      FROM Articolo as a JOIN Disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                      JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                      WHERE Piattaforma = 'Playstation 4'
+                      AND Catalogo.Disponibilita=1";
             $result = $mysqli -> query($query);
             
             while($giocoPS4 = $result -> fetch_assoc()){
@@ -43,7 +47,11 @@
 
 
             //-------INIZIO XBOX----------
-            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'Xbox One'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,d.Disponibilita 
+                      FROM Articolo as a JOIN Disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                      JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                      WHERE Piattaforma = 'Xbox One'
+                      AND Catalogo.Disponibilita=1";
             $result = $mysqli -> query($query);
             
             while($giocoXbox = $result -> fetch_assoc()){
@@ -80,7 +88,11 @@
 
 
             //--------INIZIO NINTENDO--------
-            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'Nintendo Switch'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,d.Disponibilita 
+                      FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                      JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                      WHERE Piattaforma = 'Nintendo Switch'
+                      AND Catalogo.Disponibilita=1";
             $result = $mysqli -> query($query);
             
             while($giocoNintendo = $result -> fetch_assoc()){
@@ -116,7 +128,11 @@
 
         
             //-------INIZIO PC---------
-            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = 'PC'";
+            $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,d.Disponibilita 
+                      FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                      JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                      WHERE Piattaforma = 'PC'
+                      AND Catalogo.Disponibilita=1";
             $result = $mysqli -> query($query);
             
             while($giocoPc = $result -> fetch_assoc()){

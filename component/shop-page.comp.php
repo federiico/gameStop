@@ -27,7 +27,12 @@
         if((isset($console) && isset($categoria))){
                 //Shop by Console+Category
                 $body->setContent("NomeCategoria",$verso);
-                $query ="SELECT a.Id_articolo as Id_articolo ,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Genere = '".$categoria."' AND Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
+                $query ="SELECT a.Id_articolo as Id_articolo ,Nome,Prezzo,Sconto,Descrizione,d.disponibilita 
+                         FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                         JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                         WHERE Genere = '".$categoria."' AND Piattaforma = '".$console."' 
+                         AND Catalogo.Disponibilita=1
+                         ORDER BY '".$ordine."' ".$verso."";
                 $result = $mysqli -> query($query);
             
                     while($gioco = $result -> fetch_assoc()){
@@ -66,7 +71,13 @@
         }else{
                 //Shop by Console (Promo)
                 if((isset($console)) && is_null($nome)){
-                    $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
+                    $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,d.disponibilita 
+                    FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                    JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                    WHERE Piattaforma = '".$console."' 
+                    AND Catalogo.Disponibilita=1
+                    ORDER BY '".$ordine."' ".$verso."";
+
                     if($console == "promo") $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Sconto > 0 ORDER BY '".$ordine."' ".$verso."";
                     $result = $mysqli -> query($query);
                         while($gioco = $result -> fetch_assoc()){
@@ -104,7 +115,12 @@
                 }
                 //Shop by Category
                 if((isset($categoria))){
-                    $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Genere = '".$categoria."' ORDER BY '".$ordine."' ".$verso."";
+                    $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,d.disponibilita 
+                    FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo)
+                    JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                    WHERE Genere = '".$categoria."' 
+                    AND Catalogo.Disponibilita=1
+                    ORDER BY '".$ordine."' ".$verso."";
                     $result = $mysqli -> query($query);
                 
                         while($gioco = $result -> fetch_assoc()){
@@ -142,7 +158,12 @@
             //Shop By name + console
             
             if((isset($nome)) && isset($console)){
-                $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE (Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%') AND Piattaforma = '".$console."' ORDER BY '".$ordine."' ".$verso."";
+                $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,d.disponibilita 
+                FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                WHERE (Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%') AND Piattaforma = '".$console."' 
+                AND Catalogo.Disponibilita=1
+                ORDER BY '".$ordine."' ".$verso."";
                 $result = $mysqli -> query($query);
                     while($gioco = $result -> fetch_assoc()){
 
@@ -183,7 +204,12 @@
             //Shop By name
 
             if((isset($nome)) && $console=="1" ){
-                $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,disponibilita FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) WHERE Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%' ORDER BY '".$ordine."' ".$verso."";
+                $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,Descrizione,d.disponibilita 
+                FROM Articolo as a JOIN disponibilita as d on (a.Id_articolo = d.Id_articolo) 
+                JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
+                WHERE Nome LIKE '%".$nome."%' OR Produttore LIKE '%".$nome."%' 
+                AND Catalogo.Disponibilita=1
+                ORDER BY '".$ordine."' ".$verso."";
                 $result = $mysqli -> query($query);
                     while($gioco = $result -> fetch_assoc()){
         

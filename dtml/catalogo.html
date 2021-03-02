@@ -1,0 +1,76 @@
+    <!--breadcrumbs area start-->
+    <div class="breadcrumbs_area">
+        <div class="container">   
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb_content">
+                        <ul>
+                            <li><a href="index.php">homepage</a></li>
+                            <li>Catalogo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>  
+               
+    </div>
+    <!--breadcrumbs area end-->
+    <p>
+
+    </p>
+    <div class="order_button">
+        <button  type="submit" style="float: right; margin-right: 105px;">Aggiungi un articolo</button> 
+    </div> 
+     <!--shopping cart area start -->
+    <div class="shopping_cart_area mt-60">
+        <div class="container">
+            <form action="#">      
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="cart_page table-responsive">
+                                <table>
+                            <thead>
+                                <tr>  
+                                    <th class="product_remove">Anteprima</th>
+                                    <th class="product_remove">Nome Articolo</th>
+                                    <th class="product_thumb">Prezzo</th>
+                                    <th class="product_name">Sconto</th>
+                                    <th class="product-price">Modifica</th>
+                                    <th class="product_quantity">Elimina</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    
+                                        <[foreach]>
+                                        <tr>
+                                            <td class="product_thumb"><a href="<[Link_articolo]>"><img src="<[Immagine_articolo]>" alt=""></a></td>
+                                            <td class="product_name"><a href="<[Link_articolo]>"><[Nome_articolo]></a></td>
+                                            <td class="product-price"> 
+                                                <div class="price_box">
+                                                    <span class="old_price"><[Vecchio_prezzo]></span>  
+                                                    <span class="current_price"><[Prezzo_corrente]></span>  
+                                                </div>    
+                                            </td>
+                                            <td class=""><label></label><[Sconto]></td>
+                                            <td><a href=""><i class="fas fa-pencil-alt"></i></a></td>
+                                            <td class="product_remove"><a href=""><i class="fa fa-trash-o"></i></a></td>
+                                           
+                                        </tr>
+                                        <[/foreach]>
+                                    
+                            </tbody>
+                        </table>   
+                            </div>  
+                            <!--<div class="cart_submit">
+                                <button type="submit">Aggiorna carrello</button>
+                            </div>-->
+                        </div>
+                     </div>
+                 </div>
+                
+            </form> 
+        </div>     
+    </div>
+     <!--shopping cart area end -->
