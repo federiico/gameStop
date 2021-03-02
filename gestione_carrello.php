@@ -5,6 +5,7 @@
     $page = $_SERVER["HTTP_REFERER"];
     $gioco = $_GET["gioco"];
     $azione = $_GET["azione"];
+    $aggiunto = null;
 
     if(isset($_SESSION['Id_utente'])){  
 
@@ -12,11 +13,12 @@
             $quantita = $_GET["quantita"];
             foreach ($_SESSION['Carrello'] as &$carrello) {
 
-                if($carrello['Id_articolo']==$gioco){
+                if($carrello['Id_articolo'] == $gioco){
                     
                     $carrello['quantita']=$carrello['quantita'] + $quantita;
                     $aggiunto = 1;
                 }
+            
             }
                 if($carrello['Id_articolo']!=$gioco && $aggiunto != 1){
 
@@ -38,7 +40,7 @@
                         unset( $carrello['Id_articolo'] );
                     } 
                 }
-                header("Location: $page");
+               header("Location: $page");
             }
         }
 

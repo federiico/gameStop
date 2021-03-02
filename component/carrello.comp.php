@@ -6,6 +6,7 @@
 
         session_start();
         $prezzototale=0;
+        $quantitatotale=0;
             foreach ($_SESSION['Carrello'] as &$Id_gioco) {
                 $query ="SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Id_articolo = '".$Id_gioco['Id_articolo']."'";
                 $result = $mysqli -> query($query);
@@ -37,5 +38,6 @@
 
             $body -> setContent("Prezzo_totale_Carrello", "€ ".$prezzototale);
             if( $quantitatotale == 0 ) header('Location: carrello_vuoto.php');
+            
 
 ?>

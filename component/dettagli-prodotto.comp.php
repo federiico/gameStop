@@ -2,12 +2,16 @@
 
     require "include/auth.inc.php";
 
+    $page = $_SERVER['SCRIPT_FILENAME'];
+
     if($autenticazione){
 
         $body = new Template("dtml/dettagli-prodotto.html");
         $_SESSION['Id_articolo'] = $_GET['Id_articolo'];
         //-------INFO ARTICOLO---------
-        $query = "SELECT * FROM Articolo WHERE Id_articolo='".$_GET['Id_articolo']."'";
+
+        $query = "SELECT a.Id_articolo as Id_articolo , disponibilita, Nome, Anno, Piattaforma, Produttore, Casa_sviluppatrice, Classificazione, Genere, Lingua, Prezzo, Sconto, Descrizione 
+                    FROM Articolo as a JOIN disponibilita as d on ( a.Id_articolo = d.Id_articolo ) WHERE a.Id_articolo='".$_GET['Id_articolo']."'";
 
         $result = $mysqli -> query($query);
 
@@ -31,8 +35,20 @@
                 $cont = $cont + 1;
         }
 
+
         $body -> setContent("Nome_articolo",$gioco['Nome']);
         $body -> setContent("Id_prodotto",$gioco['Id_articolo']);
+
+        if( $gioco['disponibilita'] == 0){
+
+            $body -> setContent("Aggiungi","Prodotto esaurito");
+            $body -> setContent("Link_Carrello",$page);
+
+        }else{
+
+            $body -> setContent("Link_Carrello","gestione_carrello.php");
+            $body -> setContent("Aggiungi","Aggiungi al carrello");
+        }
 
         $query = "SELECT AVG(Stelle) AS media FROM Recensione WHERE Id_articolo='".$_GET['Id_articolo']."'";
 

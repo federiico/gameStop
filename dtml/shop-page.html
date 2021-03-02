@@ -42,11 +42,11 @@
                         </div>
                         <div class="Nome Categoria"><[NomeCategoria]></div>
                         <div class=" niceselect_option">
-                            <form method="GET" class="select_option" action="">
-                                <select name="orderby" id="short" onchange="location = document.URL">
-                                    <option selected value="1">Ordina per: Uscita</option>
-                                    <option value="2" >Ordina per: Prezzo Decrescente</option>
-                                    <option value="3" >Ordina per: Prezzo Crescente</option>
+                            <form method="GET" class="select_option" action="controllo_ordine.php" id="ordine">
+                                <select name="orderby" id="short" onchange="myFuction()" >
+                                    <option selected value="1" onchange="submit">Ordina per: Uscita</option>
+                                    <option value="2" onchange="submit">Ordina per: Prezzo Decrescente</option>
+                                    <option value="3" onchange="submit">Ordina per: Prezzo Crescente</option>
                                 </select>
                             </form>
                         </div>
@@ -67,7 +67,7 @@
                                                     <span class="label_sale"><[Offerta]></span>
                                                 </div>
                                                 <div class="add_to_cart">
-                                                    <a href="gestione_carrello.php?gioco=<[Id_prodotto]>&azione=add&quantita=1" title="">Aggiungi al carrello</a>
+                                                    <a href="<[Link_Carrello]>" title=""><[Aggiungi]></a>
                                                 </div>
                                             </div>
                                             <div class="product_content grid_content">
@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="right_caption">
                                                 <div class="add_to_cart">
-                                                    <a href="dtml/cart.html" title="">Aggiungi al carrello</a>
+                                                    <a href="<[Link_Carrello]>" title=""><[Aggiungi]></a>
                                                 </div>
                                             </div>
                                         </div>
