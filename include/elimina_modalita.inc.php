@@ -6,9 +6,9 @@
 
     if($mysqli -> query($query) == true){
 
-        header("Location: ../my-account.php");
+        header("Location: ../my-account.php?activePage=pagamenti");
     }
-    else header("Location: ../my-account.php?Error=payment_error");
+    else header("Location: ../my-account.php?activePage=pagamenti&Error=payment_error");
 
 
 

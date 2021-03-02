@@ -815,6 +815,8 @@
         	$this.toggleClass('menu-open');
         }
     });
+
+   
     
     
 })(jQuery);	

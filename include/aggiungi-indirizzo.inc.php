@@ -40,7 +40,7 @@
             
             if($mysqli -> query($query) == true){
                 
-                header("Location: ../my-account.php");
+                header("Location: ../my-account.php?activePage=indirizzi");
             }
             else header("Location: ../aggiungi-indirizzo.php?Error=query");
 

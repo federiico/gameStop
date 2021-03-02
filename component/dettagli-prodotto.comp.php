@@ -4,9 +4,9 @@
 
     if($autenticazione){
 
-    
         $body = new Template("dtml/dettagli-prodotto.html");
-
+        $_SESSION['Id_articolo'] = $_GET['Id_articolo'];
+        //-------INFO ARTICOLO---------
         $query = "SELECT * FROM Articolo WHERE Id_articolo='".$_GET['Id_articolo']."'";
 
         $result = $mysqli -> query($query);
@@ -59,49 +59,63 @@
         }
 
         $body -> setContent("Descrizione", $gioco['Descrizione']);
-    
         $body -> setContent("Piattaforma", $gioco['Piattaforma']);
-
         $body -> setContent("Anno", $gioco['Anno']);
-
         $body -> setContent("Produttore", $gioco['Produttore']);
-
         $body -> setContent("Casa_sviluppatrice", $gioco['Casa sviluppatrice']);
-
         $body -> setContent("Classificazione", $gioco['Classificazione']);
-
         $body -> setContent("Genere", $gioco['Genere']);
-
         $body -> setContent("Lingua", $gioco['Lingua']);
+        //-------FINE INFO ARTICOLO----------
 
-
+       
+       
+        //--------RECENSIONI---------
         $query = "SELECT COUNT(Id_recensione) AS numeroRecensioni FROM Recensione WHERE Id_articolo='".$_GET['Id_articolo']."'";
 
         $result = $mysqli -> query($query);
 
         $recensioni = $result -> fetch_assoc();
-        
+            
         $body -> setContent("NumRecensioni", $recensioni['numeroRecensioni']);
 
-        $query = "SELECT Recensione.Stelle, Recensione.Descrizione, Utente.Nome 
-                FROM Recensione, Utente 
-                WHERE Id_articolo='".$_GET['Id_articolo']."'
-                AND Recensione.Id_utente = Utente.Id_utente";
+        if($recensioni['numeroRecensioni'] == 0)
+            $body -> setContent("hidden","hidden");
+        else{
 
-        $result = $mysqli -> query($query);
+            $query = "SELECT Recensione.Stelle, Recensione.Descrizione, Utente.Nome 
+                    FROM Recensione, Utente 
+                    WHERE Id_articolo='".$_GET['Id_articolo']."'
+                    AND Recensione.Id_utente = Utente.Id_utente";
 
-        while($recensione = $result -> fetch_assoc()){
-        
-            $body -> setContent("Utente", $recensione['Nome']);
-            $body -> setContent("DescrizioneRecensione", $recensione['Descrizione']);
-            
-            for($i = 0; $i < 5; $i++){
-                if($i < $recensione['Stelle'])
-                    $body -> setContent("Stella_recensione", "fa fa-star");
-                else $body -> setContent("Stella_recensione", "ion-android-star-outline");
+            $result = $mysqli -> query($query);
+
+            while($recensione = $result -> fetch_assoc()){
+                
+                $body -> setContent("Utente", $recensione['Nome']);
+                $body -> setContent("DescrizioneRecensione", $recensione['Descrizione']);
+                    
+                for($i = 0; $i < 5; $i++){
+                    if($i < $recensione['Stelle'])
+                        $body -> setContent("Stella_recensione", "fa fa-star");
+                    else $body -> setContent("Stella_recensione", "ion-android-star-outline");
+                }
             }
         }
 
+        $query = "SELECT * FROM Ordine WHERE Id_utente='".$_SESSION['Id_utente']."' AND Id_articolo='".$_GET['Id_articolo']."' ";
+
+        $result = $mysqli -> query($query);
+
+        if($result->num_rows == 0){
+            $body -> setContent("hidden2","hidden");
+            $body -> setContent("hidden3","hidden");
+        }
+       
+        //-------FINE RECENSIONI--------
+
+
+        //------ARTICOLI CORRELATI-------
         $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo
                 WHERE Piattaforma ='".$gioco['Piattaforma']."' 
                 AND Genere ='".$gioco['Genere']."'
@@ -130,6 +144,7 @@
             $body -> setContent("Link_prodotto_correlato","dettagli-prodotto.php?Id_articolo=".$gioco2['Id_articolo']);
 
         }
+        //------FINE ARTICOLI CORRELATI------
     }
     else header("Location: errore.php");
 

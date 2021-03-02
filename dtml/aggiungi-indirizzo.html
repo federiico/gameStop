@@ -1,48 +1,58 @@
-<section class="main_content_area">
-    <div class="container">   
-        <div class="account_dashboard">
-            <div class="row">
-                <!-- <div class="col-sm-12 col-md-9 col-lg-9"> -->
-                    <!-- Tab panes -->
-                    <div class="tab-content dashboard_content">
-                        <div class="tab-pane fade show active" id="">
+<!-- customer login start -->
+<div class="customer_login mt-60">
+    <div class="container">
+        <div class="row">
+            <!--register area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h2>Inserisci i dati del nuovo indirizzo</h2>
+                        <form action="include/aggiungi-indirizzo.inc.php" method="POST"> 
                             <p style="color: #0063d1"><[Messaggio_errore]></p>
-                            <h3>Inserisci i dati del nuovo indirizzo </h3>
-                                <div class="login">
-                                    <div class="login_form_container">
-                                        <div class="account_login_form">
-                                            <form action="include/aggiungi-indirizzo.inc.php" method = "POST">
-                                                <label style="font-weight: bold;">Nome <span>*</span></label>
-                                                <input type="text" name="Nome">
-                                                <label style="font-weight: bold;">Cognome <span>*</span></label>
-                                                <input type="text" name="Cognome">
-                                                <label style="font-weight: bold;">Telefono <span>*</span></label>
-                                                <input type="text" name="Telefono">
-                                                <label style="font-weight: bold;">Stato <span>*</span></label>
-                                                <input type="text" name="Stato">
-                                                <label style="font-weight: bold;">Provincia <span>*</span></label>
-                                                <input type="text" name="Provincia">
-                                                <label style="font-weight: bold;">Città <span>*</span></label>
-                                                <input type="text" name="Citta">
-                                                <label style="font-weight: bold;">CAP <span>*</span></label>
-                                                <input type="text" name="CAP">
-                                                <label style="font-weight: bold;">Indirizzo <span>*</span></label>
-                                                <input type="text" name="Indirizzo">
-                                                <label style="font-weight: bold;">Note </label>
-                                                <input type="text" name="Note">
-                                                <p style="font-weight: bold;">* Obbligatorio</p>
-                                               
-                                                <button type="submit" style="background-color: #0063d1">Aggiungi indirizzo</button>
-                                              
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                    
-                <!--</div> -->
-            </div>
+                            <p>   
+                                <label>Nome  <span>*</span></label>
+                                <input type="text" name="Nome">
+                            </p>
+                            <p>   
+                                <label>Cognome <span>*</span></label>
+                                <input type="text" name="Cognome">
+                            </p>
+                            <p>   
+                                <label>Telefono</label>
+                                <input type="text" name="Telefono">
+                            </p>
+                            <p>   
+                                <label>Stato <span>*</span></label>
+                                <input type="text" name="Stato">
+                            </p>
+                            <p>   
+                                <label>Provincia <span>*</span></label>
+                                <input type="text" name="Provincia">
+                            </p>
+                            <p>   
+                                <label>Città <span>*</span></label>
+                                <input type="text" name="Citta">
+                            </p>
+                            <p>   
+                                <label>CAP <span>*</span></label>
+                                <input type="text" name="CAP">
+                            </p>
+                            <p>   
+                                <label>Indirizzo <span>*</span></label>
+                                <input type="text" name="Indirizzo">
+                            </p>
+                            <p>   
+                                <label>Note <span>*</span></label>
+                                <input type="text" name="Note">
+                            </p>
+                            <p>* Obbligatorio</p>
+                            <div class="login_submit">
+                                <button type="submit">Aggiungi indirizzo</button>
+                            </div>
+                        </form>
+                    </div>    
+                </div>
+            <!--register area end-->
         </div>
-    </div>
-</section>
+    </div>    
+</div>
+<!-- customer login end -->

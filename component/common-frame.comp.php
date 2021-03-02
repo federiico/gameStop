@@ -20,7 +20,7 @@
     }
     else{
         $main -> setContent('MyAccount','Il Mio Account');
-        $main -> setContent('Link_MyAccount','my-account.php');
+        $main -> setContent('Link_MyAccount','my-account.php?activePage=info');
         $main -> setContent('Login-logout','Logout');
         $main -> setContent("Link_login-logout",'include/logout.inc.php');
         

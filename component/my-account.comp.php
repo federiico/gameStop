@@ -7,6 +7,24 @@
 
         $body = new Template("dtml/my-account.html");
 
+        if( $_GET['activePage'] == "info"){
+            $body -> setContent("Active_info","active");
+            $body -> setContent("ShowActive_info","show active");
+        }
+        if( $_GET['activePage'] == "ordini"){
+            $body -> setContent("Active_ordini","active");
+            $body -> setContent("ShowActive_ordini","show active");
+        }
+        if( $_GET['activePage'] == "indirizzi"){
+            $body -> setContent("Active_indirizzi","active");
+            $body -> setContent("ShowActive_indirizzi","show active");
+        }
+        if( $_GET['activePage'] == "pagamenti"){
+            $body -> setContent("Active_pagamenti","active");
+            $body -> setContent("ShowActive_pagamenti","show active");
+        }
+        
+
         //------INIZIO DETTAGLI UTENTE-------
         $body -> setContent("Nome",$_SESSION['Nome']);
         $body -> setContent("Cognome",$_SESSION['Cognome']);
@@ -17,68 +35,77 @@
 
 
         //------INIZIO ORDINI---------
-        $query = "SELECT Ordine.Numero, DAY(Data) AS Giorno, MONTH(Data) AS Mese, YEAR(Data) AS Anno
+        $query = "SELECT  Ordine.Numero, DAY(Data) AS Giorno, MONTH(Data) AS Mese, YEAR(Data) AS Anno
                   FROM Ordine
                   WHERE Ordine.Id_utente='".$_SESSION['Id_utente']."' ";
 
         $result = $mysqli -> query($query);
 
-        $cont = 0;
+        if($result->num_rows == 0)
+                $body ->setContent("hidden","hidden");
+        else{
+            $cont = 0;
+            
+            while($ordine = $result -> fetch_assoc()){
 
-        while($ordine = $result -> fetch_assoc()){
+            
 
-            if($cont == 0){
-                $num_ordine_corrente = $ordine['Numero'];
-                $num_ordine_precede = $ordine['Numero'];
-            }
-            else $num_ordine_corrente = $ordine['Numero'];
+                if($cont == 0){
+                    $num_ordine_corrente = $ordine['Numero'];
+                    $num_ordine_precede = $ordine['Numero'];
+                }
+                else $num_ordine_corrente = $ordine['Numero'];
 
-            if( ($num_ordine_corrente != $num_ordine_precede && $cont != 0) | $cont == 0){
+                if( ($num_ordine_corrente != $num_ordine_precede && $cont != 0) | $cont == 0){
 
-                $body -> setContent("Numero_ordine",$ordine['Numero']);
+                    $body -> setContent("Numero_ordine",$ordine['Numero']);
 
-                $data = $ordine['Giorno']."/".$ordine['Mese']."/".$ordine['Anno'];
-                $body -> setContent("Data",$data);
+                    $data = $ordine['Giorno']."/".$ordine['Mese']."/".$ordine['Anno'];
+                    $body -> setContent("Data",$data);
 
-                $query = "SELECT Ordine.Quantita, Ordine.Prezzo_totale, Articolo.Nome, Articolo.Piattaforma, Spedizione.Prezzo 
-                          FROM Ordine,Spedizione,Articolo 
-                          WHERE Ordine.Id_tipo_sped = Spedizione.Id_spedizione 
-                          AND Ordine.Id_articolo = Articolo.Id_articolo 
-                          AND Ordine.Numero ='".$ordine['Numero']."'";
-                
-                $result2 = $mysqli -> query($query);
-
-                $articoli = "";
-                $totale = 0;
-
-                while($articolo = $result2 -> fetch_assoc()){
-
-                    $articoli = $articoli.$articolo['Quantita']." x ".$articolo['Nome']." (".$articolo['Piattaforma'].") <br>";
-
-                    $totale = $totale + (float)$articolo['Prezzo_totale'];
-
-                    $costo_spedizione = (float)$articolo['Prezzo'];
+                    $query = "SELECT Ordine.Quantita, Ordine.Prezzo_totale, Articolo.Nome, Articolo.Piattaforma, Spedizione.Prezzo 
+                            FROM Ordine,Spedizione,Articolo 
+                            WHERE Ordine.Id_tipo_sped = Spedizione.Id_spedizione 
+                            AND Ordine.Id_articolo = Articolo.Id_articolo 
+                            AND Ordine.Numero ='".$ordine['Numero']."'";
                     
+                    $result2 = $mysqli -> query($query);
+
+
+                    $articoli = "";
+                    $totale = 0;
+
+                    while($articolo = $result2 -> fetch_assoc()){
+
+                        $articoli = $articoli.$articolo['Quantita']." x ".$articolo['Nome']." (".$articolo['Piattaforma'].") <br>";
+
+                        $totale = $totale + (float)$articolo['Prezzo_totale'];
+
+                        $costo_spedizione = (float)$articolo['Prezzo'];
+                        
+                    }
+
+                    $body -> setContent("Articoli", $articoli);
+
+                    $totale = $totale + $costo_spedizione;
+                    $totale = number_format((float)$totale, 2, '.', '');
+                    $body -> setContent("Totale", "€ ".$totale);
+
+                
+
+                    $body -> setContent("Link_dettagli_ordine", "dettagli-ordine.php?Numero=".$ordine['Numero']."&Data=".$data."&Articoli=".$articoli."&Totale=".$totale);
+
+                    $num_ordine_precede = $ordine['Numero'];
+
+                    $cont = $cont + 1;
+
+                }
+                else {
+                    $cont = $cont + 1;
+                    $num_ordine_precede = $ordine['Numero'];
                 }
 
-                $body -> setContent("Articoli", $articoli);
-
-                $totale = $totale + $costo_spedizione;
-                $totale = number_format((float)$totale, 2, '.', '');
-                $body -> setContent("Totale", "€ ".$totale);
-
-                $body -> setContent("Link_dettagli_ordine", "dettagli-ordine.php?Numero=".$ordine['Numero']."&Data=".$data."&Articoli=".$articoli."&Totale=".$totale);
-
-                $num_ordine_precede = $ordine['Numero'];
-
-                $cont = $cont + 1;
-
             }
-            else {
-                $cont = $cont + 1;
-                $num_ordine_precede = $ordine['Numero'];
-            }
-
         }
         //---------FINE ORDINI-----------
 
@@ -89,22 +116,27 @@
 
         $result = $mysqli -> query($query);
 
+        if($result->num_rows == 0)
+            $body -> setContent("hidden2","hidden");
+        else{
+
         
-        while($indirizzo = $result -> fetch_assoc()){
+            while($indirizzo = $result -> fetch_assoc()){
 
-            $body -> setContent("Destinatario", $indirizzo['Cognome']." ".$indirizzo['Nome']);
-            
-            $indirizzo2 = "";
+                $body -> setContent("Destinatario", $indirizzo['Cognome']." ".$indirizzo['Nome']);
+                
+                $indirizzo2 = "";
 
-            $indirizzo2 = $indirizzo['Indirizzo']."<br>".$indirizzo['Citta']." (".$indirizzo['CAP']."), ".$indirizzo['Provincia']."<br>".$indirizzo['Stato'];   
-            $body -> setContent("Indirizzo", $indirizzo2);
+                $indirizzo2 = $indirizzo['Indirizzo']."<br>".$indirizzo['Citta']." (".$indirizzo['CAP']."), ".$indirizzo['Provincia']."<br>".$indirizzo['Stato'];   
+                $body -> setContent("Indirizzo", $indirizzo2);
 
-            $body -> setContent("Telefono2", $indirizzo['Telefono']);
+                $body -> setContent("Telefono2", $indirizzo['Telefono']);
 
-            $body -> setContent("Nota", $indirizzo['Note']);
+                $body -> setContent("Nota", $indirizzo['Note']);
 
-            $body -> setContent("Link_elimina", "include/elimina_indirizzo.inc.php?Id_indirizzo=".$indirizzo['Id_spedizione']);
+                $body -> setContent("Link_elimina", "include/elimina_indirizzo.inc.php?Id_indirizzo=".$indirizzo['Id_spedizione']);
 
+            }
         }
 
         if( isset($_GET['Error']) ){
@@ -125,41 +157,45 @@
 
         $result = $mysqli -> query($query);
 
-        while($pagamento = $result -> fetch_assoc()){
-
-            $body -> setContent("Nominativo", $pagamento['Nominativo']);
-            $body -> setContent("Circuito", $pagamento['Circuito']);
-            
-            $numero = "";
-            for($i = 0; $i < 16; $i++){
-                if($i < 12)
-                    $numero = $numero."*";
-                else $numero = $numero.$pagamento['Numero'][$i];
-            }
-            $body -> setContent("Numero", $numero);
-
-            $data = $pagamento['Giorno']."/".$pagamento['Mese']."/".$pagamento['Anno'];
-
-            $body -> setContent("Scadenza", $data);
-
-            $fatturazione = $pagamento['Cognome']." ".$pagamento['Nome']."<br>".$pagamento['Telefono']."<br>".
-                            $pagamento['Indirizzo']."<br>".$pagamento['Citta']." (".$pagamento['CAP']."), "
-                            .$pagamento['Provincia']."<br>".$pagamento['Stato'];
-
-            $body -> setContent("Fatturazione", $fatturazione);
-
-            $body -> setContent("Link_elimina_modalita", "include/elimina_modalita.inc.php?Id_modalita=".$pagamento['Id']);
-
-            if( isset($_GET['Error']) ){
-                if( $_GET['Error'] == "payment_error")
-                    $body -> setContent("Messaggio_errore_pagamenti", "La modalità di pagamento è associata ad un ordine, impossibile eliminarla.");  
-            }
-
-        }
-
+        if($result->num_rows == 0)
+            $body -> setContent("hidden3","hidden");
+        else{
 
         
 
+            while($pagamento = $result -> fetch_assoc()){
+
+                $body -> setContent("Nominativo", $pagamento['Nominativo']);
+                $body -> setContent("Circuito", $pagamento['Circuito']);
+                
+                $numero = "";
+                for($i = 0; $i < 16; $i++){
+                    if($i < 12)
+                        $numero = $numero."*";
+                    else $numero = $numero.$pagamento['Numero'][$i];
+                }
+                $body -> setContent("Numero", $numero);
+
+                $data = $pagamento['Giorno']."/".$pagamento['Mese']."/".$pagamento['Anno'];
+
+                $body -> setContent("Scadenza", $data);
+
+                $fatturazione = $pagamento['Cognome']." ".$pagamento['Nome']."<br>".$pagamento['Telefono']."<br>".
+                                $pagamento['Indirizzo']."<br>".$pagamento['Citta']." (".$pagamento['CAP']."), "
+                                .$pagamento['Provincia']."<br>".$pagamento['Stato'];
+
+                $body -> setContent("Fatturazione", $fatturazione);
+
+                $body -> setContent("Link_elimina_modalita", "include/elimina_modalita.inc.php?Id_modalita=".$pagamento['Id']);
+
+                if( isset($_GET['Error']) ){
+                    if( $_GET['Error'] == "payment_error")
+                        $body -> setContent("Messaggio_errore_pagamenti", "La modalità di pagamento è associata ad un ordine, impossibile eliminarla.");  
+                }
+
+            }
+        }
+        //-------FINE PAGAMENTI------
     }
     else header("Location: errore.php");
 

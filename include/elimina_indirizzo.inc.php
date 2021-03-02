@@ -6,9 +6,9 @@
 
     if($mysqli -> query($query) == true){
 
-        header("Location: ../my-account.php");
+        header("Location: ../my-account.php?activePage=indirizzi");
     }
-    else header("Location: ../my-account.php?Error=address_error");
+    else header("Location: ../my-account.php?activePage=indirizzi&Error=address_error");
 
 
 

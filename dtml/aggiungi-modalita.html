@@ -1,37 +1,57 @@
+<!-- customer login start -->
 <div class="customer_login mt-60">
     <div class="container">
         <div class="row">
-            
-                <div class="account_form">
-                    <form action="#">
-                        <div class="col-lg-12 col-md-12">
-                            <h2>login</h2>
-                            <p>
-                                <label>Username or email <span>*</span></label>
-                                <input type="text">
-                            </p>
-                            <p>
-                                <label>Passwords <span>*</span></label>
-                                <input type="password">
-                            </p>
-                        </div>
-                        <div class="col-lg-12 col-md-12">
-
-                            <h2>Register</h2>
-                            <p>
-                                <label>Email address <span>*</span></label>
-                                <input type="text">
-                            </p>
-                            <p>
-                                <label>Passwords <span>*</span></label>
-                                <input type="password">
-                            </p>
-                            <div class="login_submit">
-                                <button type="submit">Register</button>
-                            </div>
+            <!--register area start-->
+            <div class="col-lg-6 col-md-6">
+                <div class="account_form register">
+                    <h2>Inserisci i dati del nuovo metodo</h2>
+                    <form action="include/aggiungi-modalita.inc.php" method="POST">
+                        <p style="color: #0063d1">
+                            <[Messaggio_errore]>
+                        </p>
+                        <p>
+                            <label>Nominativo <span>*</span></label>
+                            <input type="text" name="Nominativo">
+                        </p>
+                        <p>
+                            <label>Circuito: <span>*</span></label>
+                                <select name="Circuito">
+                                    <[foreach]>
+                                        <option value="<[Circuito_value]>"><[Circuito]></option>
+                                    <[/foreach]>
+                                </select>
+                        </p>
+                        <p>
+                            <label>Numero</label>
+                            <input type="text" name="Numero">
+                        </p>
+                        <p>
+                            <label>Data di scadenza: <span>*</span></label>
+                            <select name="Mese">
+                                <[foreach]>
+                                    <option value="<[Mese_value]>"><[Mese]></option>
+                                <[/foreach]>
+                            </select>
+                            <select name="Anno">
+                                <[foreach]>
+                                    <option value="<[Anno_value]>"><[Anno]></option>
+                                <[/foreach]>
+                            </select>
+                        </p>
+                        <p>
+                            <label>CVV <span>*</span></label>
+                            <input type="text" name="CVV" width="100">
+                        </p>
+                        <p>* Obbligatorio</p>
+                        <div class="login_submit">
+                            <button type="submit">Associa l'indirizzo di fatturazione</button>
                         </div>
                     </form>
                 </div>
+            </div>
+            <!--register area end-->
         </div>
     </div>
 </div>
+<!-- customer login end -->

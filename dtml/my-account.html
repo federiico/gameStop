@@ -7,10 +7,10 @@
                         <!-- Nav tabs -->
                         <div class="dashboard_tab_button">
                             <ul role="tablist" class="nav flex-column dashboard-list">
-                                <li><a href="#dettagli_account" data-toggle="tab" class="nav-link active">Il mio account</a></li>
-                                <li> <a href="#ordini" data-toggle="tab" class="nav-link">I miei ordini</a></li>
-                                <li><a href="#indirizzi" data-toggle="tab" class="nav-link">I miei indirizzi</a></li>
-                                <li><a href="#pagamenti" data-toggle="tab" class="nav-link">I miei metodi di pagamento</a></li>
+                                <li><a href="#dettagli_account" data-toggle="tab" class="nav-link <[Active_info]>">Il mio account</a></li>
+                                <li> <a href="#ordini" data-toggle="tab" class="nav-link <[Active_ordini]>">I miei ordini</a></li>
+                                <li><a href="#indirizzi" data-toggle="tab" class="nav-link <[Active_indirizzi]>">I miei indirizzi</a></li>
+                                <li><a href="#pagamenti" data-toggle="tab" class="nav-link <[Active_pagamenti]>">I miei metodi di pagamento</a></li>
                                 
                             </ul>
                         </div>    
@@ -18,7 +18,7 @@
                     <div class="col-sm-12 col-md-9 col-lg-9">
                         <!-- Tab panes -->
                         <div class="tab-content dashboard_content">
-                            <div class="tab-pane fade show active" id="dettagli_account">
+                            <div class="tab-pane fade <[ShowActive_info]>" id="dettagli_account">
                                 <h3>Dettagli account </h3>
                                 <div class="login">
                                     <div class="login_form_container">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="ordini">
+                            <div class="tab-pane fade  <[ShowActive_ordini]>" id="ordini">
                                 <h3>I miei ordini</h3>
                                 <div class="table-responsive">
                                     <table class="table">
@@ -59,7 +59,7 @@
                                                     <td><[Articoli]></td>
                                                     <td><[Totale]></td>
                                                     <td>
-                                                        <button type="submit" onclick="location.href='<[Link_dettagli_ordine]>'"  style="background-color: #0063d1">Vedi altro</button>  
+                                                        <button <[hidden]> onclick="location.href='<[Link_dettagli_ordine]>'"  style="background-color: #0063d1">Vedi altro</button>
                                                     </td>
                                                 </tr>
                                             <[/foreach]>
@@ -67,7 +67,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="tab-pane fade " id="indirizzi">
+                            <div class="tab-pane fade  <[ShowActive_indirizzi]>" id="indirizzi">
                                 <h3>I miei indirizzi</h3>
                                 <div class="table-responsive">
                                     <table class="table">
@@ -88,7 +88,7 @@
                                                     <td><[Telefono2]></td>
                                                     <td><[Nota]></td>
                                                     <td>
-                                                        <button type="submit" onclick="location.href='<[Link_elimina]>'"  style="background-color: #0063d1">Elimina</button>  
+                                                        <button <[hidden2]> type="submit" onclick="location.href='<[Link_elimina]>'"  style="background-color: #0063d1">Elimina</button>  
                                                     </td>
                                                 </tr>
                                             <[/foreach]>
@@ -100,7 +100,7 @@
                                     <p style="color: #0063d1"><[Messaggio_errore_indirizzi]></p>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pagamenti">
+                            <div class="tab-pane fade  <[ShowActive_pagamenti]>" id="pagamenti">
                                 <h3>I miei metodi di pagamento</h3>
                                 <div class="table-responsive">
                                     <table class="table">
@@ -122,7 +122,7 @@
                                                     <td><[Scadenza]></td>
                                                     <td><[Fatturazione]></td>
                                                     <td>
-                                                        <button type="submit" onclick="location.href='<[Link_elimina_modalita]>'"  style="background-color: #0063d1">Elimina</button>  
+                                                        <button <[hidden3]> type="submit" onclick="location.href='<[Link_elimina_modalita]>'"  style="background-color: #0063d1">Elimina</button>  
                                                     </td>
                                                 </tr>
                                            <[/foreach]>
