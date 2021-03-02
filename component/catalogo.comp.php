@@ -7,7 +7,7 @@
 
             $query = "SELECT Articolo.Id_articolo,Nome,Prezzo,Sconto 
                       FROM Articolo, Catalogo
-                      WHERE Articolo.Id_articolo = Catalogo.Id_catalogo
+                      WHERE Articolo.Id_articolo = Catalogo.Id_articolo
                       AND Catalogo.Disponibilita=1
                       ORDER BY Nome ASC";
 

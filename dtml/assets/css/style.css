@@ -7580,6 +7580,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   background: none;
   width: 100%;
 }
+.account_form .immagini input {
+  border: 0px;
+  height: 40px;
+  max-width: 100%;
+  padding: 0 20px;
+  background: none;
+  width: 100%;
+}
 .account_form button {
   background: #0063d1;
   border: 0;

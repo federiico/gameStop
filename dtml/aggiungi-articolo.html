@@ -1,0 +1,154 @@
+<div class="customer_login mt-60">
+    <div class="container">
+        <div class="row">
+            <!--register area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h2>Inserisci i dati del nuovo articolo</h2>
+                        <form method="POST" id="selettore" nctype="multipart/form-data"> 
+                            <p style="color: #0063d1"><[Messaggio_errore]></p>
+                            <p>   
+                                <label>Nome  <span>*</span></label>
+                                <input type="text" name="Nome" id="Nome">
+                            </p>
+                            <p>   
+                                <label>Piattaforma: <span>*</span></label>
+                                <select name="Piattaforma" id="Piattaforma">
+                                    <option value="PlayStation">PlayStation 4</option>
+                                    <option value="Xbox">Xbox One</option>
+                                    <option value="Nintendo">Nintendo Switch</option>
+                                    <option value="Pc">Pc</option>
+                                </select>
+                            </p>
+                            <p>   
+                                <label>Anno di uscita: <span>*</span></label>
+                                <select name="Anno" id="Anno">
+                                    <[foreach]>
+                                        <option <[selected]> value="<[Anno_value]>"><[Anno]></option>
+                                    <[/foreach]>
+                                </select>
+                            </p>
+                            <p>   
+                                <label>Produttore <span>*</span></label>
+                                <input type="text" name="Produttore" id="Produttore">
+                            </p>
+                            <p>   
+                                <label>Casa sviluppatrice <span>*</span></label>
+                                <input type="text" name="Sviluppatrice" id="Sviluppatrice">
+                            </p>
+                            <p>   
+                                <label>Classificazione: <span>*</span></label>
+                                <select name="Classificazione" id="Classificazione">
+                                    <option value="3">PEGI 3</option>
+                                    <option value="7">PEGI 7</option>
+                                    <option value="12">PEGI 12</option>
+                                    <option value="16">PEGI 16</option>
+                                    <option value="18">PEGI 18</option>
+                                </select>
+                            </p>
+                            <p>   
+                                <label>Genere: <span>*</span></label>
+                                <select name="Genere" id="Genere">
+                                    <option value="Action">Action</option>
+                                    <option value="Guida">Giochi di guida</option>
+                                    <option value="RPG">RPG</option>
+                                    <option value="Simulazione">Simulazione</option>
+                                    <option value="Sparatutto">Sparatutto</option>
+                                    <option value="Sport">Sport</option>                 
+                                </select>
+                            </p>
+                            <p>   
+                                <label>Lingua: <span>*</span></label>
+                                <select name="Lingua" id="Lingua">
+                                    <option value="Francese">Francese</option>
+                                    <option value="Inglese">Inglese</option>
+                                    <option selected value="Italiano">Italiano</option>
+                                    <option value="Spagnolo">Spagnolo</option>
+                                    <option value="Tedesco">Tedesco</option>
+                                </select>
+                            </p>
+                            <p>   
+                                <label>Prezzo <span>*</span></label>
+                                <input type="text" name="Prezzo" id="Prezzo">
+                            </p>
+                            <p>   
+                                <label>Sconto (%) <span>*</span></label>
+                                <input type="text" name="Sconto" id="Sconto">
+                            </p>
+                            <p>   
+                                <label>Descrizione <span>*</span></label>
+                                <textarea name="Descrizione" rows="8" cols="63" id="Descrizione"></textarea>
+                            </p>
+                            <p> 
+                                <div class="immagini">
+                                    <label>Foto dell'articolo <span>*</span> </label>
+                                    <input style="margin-left: -20px;"  type="file" name="immagine" id="immagine">
+                                    <span id="nomi_file"> </span> 
+                                </div>
+                            </p>
+                            <p>* Obbligatorio</p>
+                            <div class="login_submit">
+                                <button name="button" type="submit">Aggiungi articolo</button>
+                            </div>
+                        </form>
+                    </div>    
+                </div>
+            <!--register area end-->
+        </div>
+    </div>    
+</div>
+
+<script>
+    function getNomiFile () {
+        let files = this.files;
+        let numFiles = files.length;
+        let nomiFile = "";
+        for(let fileId = 0; fileId < numFiles; fileId++){
+            nomiFile = nomiFile + files[fileId].name + "<br>";
+        }
+        document.getElementById ("nomi_file").innerHTML = nomiFile;
+    }
+    document.getElementById("immagine").addEventListener ("change", getNomiFile, false);
+
+
+    $(document).ready(function(){
+
+        $('form#selettore').on('submit',function(event){
+        event.preventDefault();
+        var image_name = $('#immagine').val();
+        if(image_name == ''){
+            alert("Inserisci immagine");
+            return false;
+        }
+
+        var formData = new FormData(this);
+        formData.append('Nome', $('#Nome').val());
+        formData.append('Piattaforma', $('#Piattaforma').val());
+        formData.append('Anno', $('#Anno').val());
+        formData.append('Produttore', $('#Produttore').val());
+        formData.append('Sviluppatrice', $('#Sviluppatrice').val());
+        formData.append('Classificazione', $('#Classificazione').val());
+        formData.append('Genere', $('#Genere').val());
+        formData.append('Lingua', $('#Lingua').val());
+        formData.append('Prezzo', $('#Prezzo').val());
+        formData.append('Sconto', $('#Sconto').val());
+        formData.append('Descrizione', $('#Descrizione').text());
+        formData.append('Immagine',$('#immagine').get(0).files[0]);
+
+
+            $.ajax({
+                url: 'include/aggiungi-articolo.inc.php',
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success:function(data){
+                    if(data == "okay")
+                        window.location.href = "htt";
+
+                }
+            });
+    });
+    });
+</script>
