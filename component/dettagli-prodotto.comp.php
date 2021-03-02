@@ -47,7 +47,7 @@
 
         }else{
 
-            $body -> setContent("Link_Carrello","gestione_carrello.php");
+            $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php");
             $body -> setContent("Aggiungi","Aggiungi al carrello");
         }
 

@@ -11,7 +11,7 @@
                       FROM Articolo as a JOIN Disponibilita as d on (a.Id_articolo = d.Id_articolo) 
                       JOIN Catalogo on (a.Id_articolo = Catalogo.Id_articolo) 
                       WHERE Piattaforma = 'Playstation 4'
-                      AND Catalogo.Disponibilita=1";
+                      AND Catalogo.Disponibilita=1 ";
             $result = $mysqli -> query($query);
             
             while($giocoPS4 = $result -> fetch_assoc()){
@@ -38,7 +38,7 @@
                     $body -> setContent("Link_carrello_ps4","");
 
                 }else{
-                    $body -> setContent("Link_carrello_ps4","gestione_carrello.php?gioco=".$giocoPS4['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Link_carrello_ps4","include/gestione_carrello.inc.php?gioco=".$giocoPS4['Id_articolo']."&quantita=1&azione=add");
                     $body -> setContent("Aggiungi_PS4","Aggiungi al carrello");
                 }
                 $body -> setContent("Link_prodotto_PS4","dettagli-prodotto.php?Id_articolo=".$giocoPS4['Id_articolo']);

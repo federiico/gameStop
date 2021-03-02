@@ -19,17 +19,14 @@
                         </div>
                         <div class="Nome Categoria"><[NomeCategoria]></div>
                         <div class=" niceselect_option">
-                            <form method="GET" class="select_option" action="controllo_ordine.php" id="ordine">
-                                <select name="orderby" id="short" onchange="myFuction()" >
-                                    <option selected value="1" onchange="submit">Ordina per: Uscita</option>
-                                    <option value="2" onchange="submit">Ordina per: Prezzo Decrescente</option>
-                                    <option value="3" onchange="submit">Ordina per: Prezzo Crescente</option>
+                            <form method="GET" class="select_option" action="prova.php" id="ordine" name="ordine">
+                                <select name="orderby" form="ordine">
+                                    <option selected value="1" >Ordina per: Uscita</option>
+                                    <option value="2" >Ordina per: Prezzo Decrescente</option>
+                                    <option value="3" >Ordina per: Prezzo Crescente</option>
                                 </select>
                             </form>
                         </div>
-                        <!--<div class="page_amount">
-                            <p>Showing 1–9 of <[conta]> results</p>
-                        </div>-->
                     </div>
                      <!--shop toolbar end-->
 
@@ -80,6 +77,7 @@
                 </div>
             </div>
         </div>
-    
+    </div>
+</body>
     <!--shop  area end-->
     

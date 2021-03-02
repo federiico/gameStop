@@ -21,7 +21,7 @@
             <div class="checkout_form">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <p><[errore]></p>
+                        <div class="col-lg-6 col-md-6" style="color: red;"><[errore]></div>
                         <form method="GET" action="acquisto_effettuato.php">
                             <h3>Dettagli Spedizione:</h3>
                             <div class="row">
@@ -40,6 +40,7 @@
                                             <option value="<[Id_indirizzo]>"><[indirizzo]></option >
                                         <[/foreach]>
                                     </select>
+                                    <p><a href="aggiungi-indirizzo.php">Aggiungi indirizzo +</a></p>
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="country">Seleziona la carta di credito: <span>*</span></label>
@@ -48,6 +49,7 @@
                                             <option value="<[Id_Cartadicredito]>"><[Cartadicredito]></option>      
                                         <[/foreach]>
                                     </select>
+                                    <p><a href="aggiungi-modalita.php">Aggiungi un metodo di pagamento +</a></p>
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="country">Seleziona la modalità di spedizione: <span>*</span></label>
