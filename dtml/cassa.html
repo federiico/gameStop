@@ -1,4 +1,4 @@
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
         <div class="container">   
@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div style="color: red;"><[errore]></div>
-                        <form method="POST" action="acquisto_effettuato.php">
+                        <form method="POST" action="include/acquisto_effettuato.inc.php">
                             <h3>Dettagli Spedizione:</h3>
                             <div class="row">
                                 <div class="col-lg-6 mb-20">
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label for="country">Seleziona la modalità di spedizione: <span>*</span></label>
-                                    <select class="niceselect_option" name="sped" id="country">
+                                    <select class="niceselect_option" name="sped" id="spedizione" >
                                         <[foreach]>
                                             <option value="<[Id_spedizione]>"><[Nome_Spedizione]></option>  
                                         <[/foreach]>
@@ -84,22 +84,22 @@
                                     <[foreach]>
                                         <tr>
                                                 <td><a href="<[Link_articolo]>"> <[Nome_articolo]> ( <[Console_articolo]> ) <strong> × <[Quantità_articolo]></strong></td>
-                                                <td> <[Prezzo_articolo]> </td>
+                                                <td><label style="font-weight: normal;"><[Prezzo_articolo]></label> </td>
                                         </tr>
                                     <[/foreach]>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <th>Sub-Totale</th>
-                                            <td><[Totale_Articoli]></td>
+                                            <td><input type="text" style="border: 0px; background: none; text-align: center;" disabled value="<[Totale_Articoli]>" id="subtotale"></td>
                                         </tr>
                                         <tr>
                                             <th>Spedizione</th>
-                                            <td><strong>+ Prezzo spedizione</strong></td>
+                                            <td><input type="text" style="border: 0px; background: none; text-align: center;" disabled value="" id="sped"></td>
                                         </tr>
                                         <tr class="order_total">
                                             <th>Totale ordine</th>
-                                            <td><strong><[Totale]></strong></td>
+                                            <td><strong><input type="text" style="border: 0px; background: none; text-align: center;" disabled value="<[Totale]>" id="totale"></strong></td>
                                         </tr>
                                     </tfoot>
                                 </table>     
@@ -117,3 +117,36 @@
         </div>       
     </div>
     <!--Checkout page section end-->
+
+<script>
+
+$(document).ready(function(){
+
+    $('#spedizione').on('change', function(event){
+      
+        var id_spedizione = $(this).val();
+
+        if(id_spedizione == 1){
+            $('#sped').val('€ 0.0');
+            $('#totale').val("€ " + $('#subtotale').val().substring(2,6));
+        }
+        if(id_spedizione == 2){
+            var tot = parseFloat($('#subtotale').val().substring(2,7)) + 4.99;
+            $('#sped').val('€ 4.99');
+            $('#totale').val("€ " + tot.toFixed(2));
+
+        }
+        if(id_spedizione == 3){
+            var tot = parseFloat($('#subtotale').val().substring(2,7)) + 9.99;
+            $('#sped').val('€ 9.99');
+            $('#totale').val("€ " + tot.toFixed(2));
+        }
+              
+    })
+
+    $('#spedizione').change();
+
+});
+
+</script>
+

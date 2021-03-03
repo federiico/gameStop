@@ -83,7 +83,7 @@
 
             $prezzofinale=$prezzototale + 0 ;
 
-            $body -> setContent("Totale","€ ".$prezzofinale);
+            $body -> setContent("Totale",$prezzofinale);
 
             if( $quantitatotale == 0 ) header('Location: carrello_vuoto.php');
         }

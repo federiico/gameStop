@@ -1,5 +1,6 @@
 <?php
 
+    $_SERVER['Script'] = "acquisto_effettuato.php";
 	require "include/dbms.inc.php";
 	require "include/template.inc.php";
     
