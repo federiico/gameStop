@@ -171,7 +171,10 @@
             //--------INIZIO NOVITA----------
             $annoCorrente = date('Y');
             $annoCorrente = $annoCorrente -1;
-            $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo WHERE Anno='".$annoCorrente."' ";
+            $query = "SELECT Articolo.Id_articolo,Nome,Prezzo,Sconto FROM Articolo 
+            JOIN Catalogo on (Articolo.Id_articolo = Catalogo.Id_articolo) 
+            WHERE Anno='".$annoCorrente."'
+            AND Catalogo.Disponibilita = 1 ";
             $result = $mysqli -> query($query);
             
             while($giocoNovita = $result -> fetch_assoc()){
@@ -199,7 +202,10 @@
 
 
             //---------INIZIO IN SCONTO----------
-            $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo WHERE Sconto > 0";
+            $query = "SELECT Articolo.Id_articolo,Nome,Prezzo,Sconto FROM Articolo 
+                      JOIN Catalogo on (Articolo.Id_articolo = Catalogo.Id_articolo) 
+                      WHERE Sconto > 0
+                      AND Catalogo.Disponibilita = 1";
             $result = $mysqli -> query($query);
             
             while($giocoScontato = $result -> fetch_assoc()){
@@ -223,10 +229,11 @@
 
             //--------INIZIO PIU VENDUTI--------
             $query = "SELECT Articolo.Nome,Articolo.Prezzo,Articolo.Sconto,COUNT(Ordine.Id_ordine), Ordine.Id_articolo
-                    FROM Ordine,Articolo
-                    WHERE Articolo.Id_articolo = Ordine.Id_articolo
-                    GROUP BY Ordine.Id_articolo
-                    ORDER BY COUNT(Ordine.Id_articolo) ASC";
+                      FROM Ordine JOIN Articolo ON (Ordine.Id_articolo = Articolo.Id_articolo)
+                      JOIN Catalogo ON (Articolo.Id_articolo = Catalogo.Id_articolo) 
+                      AND Catalogo.Disponibilita = 1
+                      GROUP BY Ordine.Id_articolo
+                      ORDER BY COUNT(Ordine.Id_articolo) ASC";
             $result = $mysqli -> query($query);
             
             while($giocoVenduto = $result -> fetch_assoc()){
