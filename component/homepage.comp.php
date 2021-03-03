@@ -233,7 +233,7 @@
                       JOIN Catalogo ON (Articolo.Id_articolo = Catalogo.Id_articolo) 
                       AND Catalogo.Disponibilita = 1
                       GROUP BY Ordine.Id_articolo
-                      ORDER BY COUNT(Ordine.Id_articolo) ASC";
+                      ORDER BY COUNT(Ordine.Id_articolo) DESC";
             $result = $mysqli -> query($query);
             
             while($giocoVenduto = $result -> fetch_assoc()){
