@@ -1,0 +1,68 @@
+<div class="customer_login mt-60">
+    <div class="container">
+        <div class="row">
+            <!--register area start-->
+                <div class="col-lg-6 col-md-6">
+                    <div class="account_form register">
+                        <h2>Inserisci le immagini del nuovo articolo</h2>
+                        <form method="POST" action="" id="upload_images" nctype="multipart/form-data"> 
+                                <div class="immagini">
+                                    <label>Immagini dell'articolo</label>
+                                    <input style="margin-left: -20px;"  type="file" name="immagine[]" id="immagine" multiple accept=".jpg, .png">
+                                    <span id="nomi_file"> </span> 
+                                </div>
+                            <p style="color:#0063d1">
+                                <[Messaggio_errore]>
+                            </p>
+                            <div class="login_submit">
+                                <button name="button" type="submit">Aggiungi le informazioni</button>
+                            </div>
+                        </form>
+                    </div>    
+                </div>
+            <!--register area end-->
+        </div>
+    </div>    
+</div>
+
+<script>
+    function getNomiFile () {
+        let files = this.files;
+        let numFiles = files.length;
+        let nomiFile = "";
+        for(let fileId = 0; fileId < numFiles; fileId++){
+            nomiFile = nomiFile + files[fileId].name + "<br>";
+        }
+        document.getElementById ("nomi_file").innerHTML = nomiFile;
+    }
+    document.getElementById("immagine").addEventListener ("change", getNomiFile, false);
+
+
+    $(document).ready(function(){
+
+        $('#upload_images').on('submit', function(event){
+            event.preventDefault();
+            var image_name = $('#immagine').val();
+            if(image_name == '')
+            {
+                window.location = "http://localhost/gameStop/aggiungi-immagini.php?Error=no_file";
+                return false;
+            }
+            else
+            {
+                window.location = "http://localhost/gameStop/aggiungi-articolo.php";
+                $.ajax({
+                    url:"include/aggiungi-immagini.inc.php",
+                    method:"POST",
+                    data: new FormData(this),
+                    contentType:false,
+                    cache:false,
+                    processData:false,
+                    success:function(data)
+                    {
+                    }
+                });
+            }
+        });
+    });  
+</script>

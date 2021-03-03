@@ -26,18 +26,18 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product_d_right">
                             <h1>Nome</h1>                           
-                            <input type="text" style="margin-bottom: 20px;" name="Nome" value="<[Nome_articolo]>"></input>
+                            <input type="text" style="margin-bottom: 20px; margin-top: -15px; text-align:center;" name="Nome" value="<[Nome_articolo]>" size="30"></input>
                             <input type="text" name="Id_articolo" value="<[Id_prodotto]>" hidden ></input>
                             <div class="price_box">
                                 <h1>Prezzo</h1>
-                                <input type="text" style="margin-bottom: 20px;" name="Prezzo" value="<[Prezzo_corrente]>"></input>
-                                <h1>Sconto</h1>
-                                <input type="text" style="margin-bottom: 20px;" name="Sconto" value="<[Sconto]> "></input>
+                                <input type="text" style="margin-bottom: 20px; margin-top: -15px; text-align:center;" name="Prezzo" value="<[Prezzo_corrente]>" size="7"></input>
+                                <h1>Sconto (%)</h1>
+                                <input type="text" style="margin-bottom: 20px; margin-top: -15px; text-align:center;" name="Sconto" value="<[Sconto]>" size="5"></input>
                                 <h1>Disponibilità</h1>
-                                <input type="text" style="margin-bottom: 20px;" name="Disponibilita" value="<[Disponibilita]> "></input>
+                                <input type="text" style="margin-bottom: 20px; margin-top: -15px; text-align:center;" name="Disponibilita" value="<[Disponibilita]>" size="5"></input>
                             </div>
                             <div class="product_variant quantity">
-                                    <button  class="button" type="" > Modifica prodotto </button>     
+                                    <button  style="margin-left: -1px;" class="button" type="" > Modifica prodotto </button>     
                             </div>
                     </div>
                 </div>
@@ -65,7 +65,8 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="info" role="tabpanel" >
                                 <div class="product_info_content">
-                                    <textarea type="text" name="Descrizione" rows="10" cols="130" style="resize: none;"> <[Descrizione_prodotto]> </textarea>
+                                    <textarea type="text" name="Descrizione" rows="10" cols="130" style=" resize: none; border: 1px solid #ebebeb;
+                                    background: none;"> <[Descrizione_prodotto]> </textarea>
                                 </div>    
                             </div>
                             <div class="tab-pane fade" id="sheet" role="tabpanel" >
@@ -74,31 +75,38 @@
                                             <tbody>
                                                 <tr>
                                                     <td class="first_child">Piattaforma</td>
-                                                    <td> <input name="Piattaforma" value="<[Piattaforma_prodotto]>"/> </td>
+                                                    <td> <input name="Piattaforma" style="border: 1px solid #ebebeb;
+                                                        background: none;" value="<[Piattaforma_prodotto]>"/> </td>
                                                 </tr>
                                                 <tr>
                                                     <td class="first_child">Anno di pubblicazione</td>
-                                                    <td><input name="Anno" value="<[Anno_prodotto]>"/></td>
+                                                    <td><input name="Anno" style="border: 1px solid #ebebeb;
+                                                        background: none;" value="<[Anno_prodotto]>"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="first_child">Produttore</td>
-                                                    <td><input name="Produttore" value="<[Produttore_prodotto]>"/></td>
+                                                    <td><input name="Produttore" style="border: 1px solid #ebebeb;
+                                                        background: none;" value="<[Produttore_prodotto]>"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="first_child">Casa Sviluppatrice</td>
-                                                    <td><input name="Casa" value="<[Casa_Sviluppatrice_prodotto]>"/></td>
+                                                    <td><input name="Casa" style="border: 1px solid #ebebeb;
+                                                        background: none;" value="<[Casa_Sviluppatrice_prodotto]>"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="first_child">Classificazione</td>
-                                                    <td><input name="Classificazione" value="<[Classificazione_prodotto]>"/></td>
+                                                    <td><input name="Classificazione" style="border: 1px solid #ebebeb;
+                                                        background: none;" value="<[Classificazione_prodotto]>"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="first_child">Genere</td>
-                                                    <td><input name="Genere" value="<[Genere_prodotto]>"/></td>
+                                                    <td><input name="Genere" style="border: 1px solid #ebebeb;
+                                                        background: none;" value="<[Genere_prodotto]>"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="first_child">Lingua</td>
-                                                    <td><input name="Lingua" value="<[Lingua_prodotto]>"/></td>
+                                                    <td><input name="Lingua" style="border: 1px solid #ebebeb;
+                                                        background: none;" value="<[Lingua_prodotto]>"/></td>
                                                 </tr>
                                             </tbody>
                                         </table>

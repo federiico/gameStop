@@ -1,9 +1,7 @@
 <?php
 
     require "include/auth.inc.php";
-    
-    $connect = new PDO("mysql:host=localhost;dbname=gamestop", "root", "");
-    
+     
     if($autenticazione){
 
         $body = new Template("dtml/aggiungi-articolo.html");
@@ -14,15 +12,15 @@
         }
         $body -> setContent("selected","selected");
 
+        if(isset($_GET['Error'])){
 
+           // if( $_GET['Error'] == "query")
+             //   $body -> setContent("Messaggio_errore","Ops, qualcosa è andato storto. Per favore riprova.");
+            //else if( $_GET['Error'] == "campo_vuoto")
+                     $body -> setContent("Messaggio_errore",$_GET['Error']);
 
-      
-
-        if( isset($_GET['Error']) ){
-
-            if( $_GET['Error'] == "campo_vuoto")
-                $body -> setContent("Messaggio_errore", "Registrazione del nuovo indirizzo fallita: inserire tutti i campi richiesti.");
         }
+
     }
     else header("Location: errore.php");
 
