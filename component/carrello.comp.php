@@ -41,7 +41,7 @@
                 $body -> setContent("Prezzo_totale_Carrello", "€ ".$prezzototale);
                 if( $quantitatotale == 0 ) header('Location: carrello_vuoto.php');
         }
-        else header("Location: ../errore.php");
+        else header("Location: errore.php");
             
 
 ?>
