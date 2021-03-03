@@ -30,7 +30,7 @@
         if($result->num_rows == 0){
             
             $query = "INSERT INTO Articolo (Nome,Piattaforma,Anno,Produttore,Casa_sviluppatrice,Classificazione,Genere,Lingua,Prezzo,Sconto,Descrizione)
-                      VALUES ('".$nome."','".$piattaforma."','".$anno."','".$produttore."','".$casa."','".$classificazione."','".$genere."','".$lingua."','".$prezzo."','".$sconto."','".$descrizione."')";
+                      VALUES ('".$nome."','".$piattaforma."','".$anno."','".$produttore."','".$casa."','".$classificazione."','".$genere."','".$lingua."','".$prezzo."','".$sconto."',\"".$descrizione."\")";
 
             $result = $mysqli -> query($query);
             
@@ -52,8 +52,8 @@
             $id_articolo = $articolo['Id_articolo'];
             $query = "UPDATE Articolo SET Nome='".$nome."',Produttore='".$produttore."',Anno='".$anno."',Casa_sviluppatrice='".$casa."'
                       ,Classificazione='".$classificazione."',Genere='".$genere."',Lingua='".$lingua."',Prezzo='".$prezzo."',
-                      Sconto='".$sconto."',Descrizione='".$descrizione."' 
-                      WHERE Id_articolo='".$id_articolo."' ";
+                      Sconto='".$sconto."',Descrizione= \"".$descrizione."\" 
+                      WHERE Id_articolo='".$id_articolo."'";
 
             $result = $mysqli -> query($query);
 
@@ -84,9 +84,9 @@
 
                 if($result2)
                     header("Location: ../catalogo.php");
-                else header("Location: ../aggiungi-articolo.php?Error=query");
+                else header("Location: ../aggiungi-articolo.php?Error=query".$sem);
         }
-        else header("Location: ../aggiungi-articolo.php?Error=query");
+        else header("Location: ../aggiungi-articolo.php?Error=query".$sem);
     }
     else header("Location: ../aggiungi-articolo.php?Error=campo_vuoto");
 
