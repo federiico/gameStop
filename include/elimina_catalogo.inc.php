@@ -9,5 +9,10 @@
 
     $result = $mysqli -> query($query);
 
+
+    $query_delimg = "DELETE i,ia FROM immagine as i JOIN immagine_articolo as ia on (i.Id_immagine = ia.Id_immagine) WHERE ia.Id_articolo=".$gioco;
+
+    $result_img = $mysqli -> query($query_delimg);
+
     header('Location: ../catalogo.php');
 ?>

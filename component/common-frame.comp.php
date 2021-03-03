@@ -19,17 +19,18 @@
         $main -> setContent("Link_Tasto_2",'registrazione.php');
         $main -> setContent("hidden",'hidden');
         $main -> setContent("hiddenCatalogo","hidden");
+        $main -> setContent("Carrellino","");
     }
     else{
 
         if($_SESSION['Gruppo'] != "Admin")
             $main -> setContent("hiddenCatalogo","hidden");
 
+        $main -> setContent("Carrellino","carrello.php");
         $main -> setContent('MyAccount','Il Mio Account');
         $main -> setContent('Link_MyAccount','my-account.php?activePage=info');
         $main -> setContent('Login-logout','Logout');
         $main -> setContent("Link_login-logout",'include/logout.inc.php');
-        
                 foreach ($_SESSION['Carrello'] as &$Id_gioco) {
 
                     $query ="SELECT Id_articolo,Nome,Prezzo,Sconto,Descrizione FROM Articolo WHERE Id_articolo = '".$Id_gioco['Id_articolo']."'";
