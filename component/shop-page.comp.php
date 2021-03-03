@@ -234,7 +234,6 @@
                         else $body -> setContent("Prezzo_corrente","€ ".$gioco['Prezzo']);
             
                         $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
-                        $body -> setContent("conta", $query['conta']);
                         if( $gioco['disponibilita'] == 0){
 
                             $body -> setContent("Aggiungi","Prodotto esaurito");

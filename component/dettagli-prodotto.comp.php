@@ -57,6 +57,7 @@
 
         $stelle = $result -> fetch_assoc();
 
+        if($stelle['media'] != NULL) $body -> setContent("hidden_vuotorecensioni", "hidden");
         for($i = 0; $i < 5; $i++){
             if($i < (int)$stelle['media'])
                 $body -> setContent("Stella_articolo", "fa fa-star");
@@ -133,10 +134,11 @@
 
 
         //------ARTICOLI CORRELATI-------
-        $query = "SELECT Id_articolo,Nome,Prezzo,Sconto FROM Articolo
+        $query = "SELECT a.Id_articolo as Id_articolo,Nome,Prezzo,Sconto,c.Disponibilita FROM Articolo as a JOIN catalogo as c on (a.Id_articolo = c.Id_articolo)
                 WHERE Piattaforma ='".$gioco['Piattaforma']."' 
                 AND Genere ='".$gioco['Genere']."'
-                AND Id_articolo !='".$gioco['Id_articolo']."'";
+                AND a.Id_articolo !='".$gioco['Id_articolo']."'
+                AND c.Disponibilita=1";
 
         $result = $mysqli -> query($query);
 
