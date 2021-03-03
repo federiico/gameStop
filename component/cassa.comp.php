@@ -11,6 +11,7 @@
             if(isset($errore)) $body -> setContent("errore","CAMPI MANCANTI");
 
             //DETTAGLI SPEDIZIONE
+
             //Modalita spedizione
             $query_spedizione ="SELECT * FROM spedizione";
             $result_spedizione = $mysqli -> query($query_spedizione);
@@ -23,7 +24,7 @@
 
             //modalita pagamento
 
-            $query_carta ="SELECT Id,SUBSTRING(Numero, 1, 4) AS Inizio , SUBSTRING(Numero, 12, 4) AS Fine , MONTH(Data_scadenza) AS Mese, SUBSTRING(YEAR(Data_scadenza),3,4) AS Anno FROM modalita_pagamento WHERE Id='".$_SESSION["Id_utente"]."'";
+            $query_carta ="SELECT mp.Id as Id,SUBSTRING(Numero, 1, 4) AS Inizio , SUBSTRING(Numero, 12, 4) AS Fine , MONTH(Data_scadenza) AS Mese, SUBSTRING(YEAR(Data_scadenza),3,4) AS Anno FROM modalita_pagamento as mp JOIN utente_modalita as um on (um.Id_modalita = mp.Id ) WHERE um.Id_utente= '".$_SESSION["Id_utente"]."'";
             $result_carta = $mysqli -> query($query_carta);
             while($carta = $result_carta -> fetch_assoc()){
                 $body -> setContent("Id_Cartadicredito",$carta['Id']);

@@ -24,15 +24,19 @@
                     if($gioco['Sconto'] > 0){
 
                         $nuovoPrezzo = ($gioco['Prezzo'] - (($gioco['Prezzo'] / 100) * $gioco['Sconto'])); //prezzo scontato
-                        $nuovoPrezzo = number_format((int)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
-                        $body -> setContent("Prezzo_articolo_Carrello", $nuovoPrezzo);
+                        $nuovoPrezzo = number_format((float)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
+                        $body -> setContent("Prezzo_articolo_Carrello","€ ".$nuovoPrezzo);
+                        $totprezzo=$nuovoPrezzo * $Id_gioco['quantita'];
+                        $body -> setContent("Prezzo_articolo_Carrelloxqta", "€ ".$totprezzo);
                     }else {
                         $body -> setContent("Prezzo_articolo_Carrello","€ ".$gioco['Prezzo']);
+                        $totprezzo=$gioco ['Prezzo'] * $Id_gioco['quantita'];
+                        $totprezzo=number_format((float)$totprezzo, 2, '.', '');
+                        $body -> setContent("Prezzo_articolo_Carrelloxqta", "€ ".$totprezzo);
                     }
                     $body -> setContent("Link_articolo_Carrello","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
                     $body -> setContent("Quantità_articolo_Carrello",$Id_gioco['quantita']);
-                    $totprezzo=$gioco ['Prezzo'] * $Id_gioco['quantita'];
-                    $body -> setContent("Prezzo_articolo_Carrelloxqta", "€ ".$totprezzo);
+                    
                     $prezzototale=$totprezzo+$prezzototale;
                     }
                     

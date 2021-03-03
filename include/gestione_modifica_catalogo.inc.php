@@ -18,6 +18,7 @@
      $lingua=$_GET['Lingua'];
      $disponibilita=$_GET['Disponibilita'];
 
+    $prezzo=number_format((float)$prezzo, 2, '.', '');
 
     $query = " UPDATE articolo SET Nome='".$nome."', Prezzo='".$prezzo."', Sconto='".$sconto."', Descrizione=\"".$descrizione."\", Piattaforma='".$Piattaforma."', Anno='".$anno."', Produttore ='".$produttore."',
                 Classificazione='".$classificazione."', Genere='".$genere."', Lingua='".$lingua."' WHERE Id_articolo = '".$gioco."'" ;

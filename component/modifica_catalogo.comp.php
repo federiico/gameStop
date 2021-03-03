@@ -8,7 +8,7 @@
         $page = $_SERVER['SCRIPT_FILENAME'];
 
         $_SESSION['Id_articolo'] = $_GET['gioco'];
-        //-------INFO ARTICOLO---------
+ 
 
         $query = "SELECT a.Id_articolo as Id_articolo , Disponibilita, Nome, Anno, Piattaforma, Produttore, 'Casa sviluppatrice', Classificazione, Genere, Lingua, Prezzo, Sconto, Descrizione 
                     FROM Articolo as a JOIN Disponibilita as d on ( a.Id_articolo = d.Id_articolo ) WHERE a.Id_articolo='".$_GET['gioco']."'";
