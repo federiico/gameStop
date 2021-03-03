@@ -21,8 +21,8 @@
             <div class="checkout_form">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <div style="color: red;"><[errore]></div>
-                        <form method="POST" action="include/acquisto_effettuato.inc.php">
+                      <form method="POST" action="include/acquisto_effettuato.inc.php">
+                          
                             <h3>Dettagli Spedizione:</h3>
                             <div class="row">
                                 <div class="col-lg-6 mb-20">
@@ -69,8 +69,8 @@
                             	    	    	    	    	    
                             </div>   
                     </div>
+                    
                     <div class="col-lg-6 col-md-6">  
-                             <p></p>  
                             <h3>Il tuo Ordine: </h3> 
                             <div class="order_table table-responsive">
                                 <table>
@@ -105,10 +105,13 @@
                                 </table>     
                             </div>
                             <div class="payment_method"> 
+                             
                                <div class="panel-default">
+                                
                                 <div class="order_button">
                                     <button  type="submit" style="float: right;">Procedi al pagamento</button> 
                                 </div>    
+                                <p style="color: #0063d1;"><[errore]></p>
                             </div> 
                         </form>         
                     </div>
@@ -127,8 +130,10 @@ $(document).ready(function(){
         var id_spedizione = $(this).val();
 
         if(id_spedizione == 1){
+            var tot = parseFloat($('#subtotale').val().substring(2,7));
+            tot = tot.toFixed(2);
             $('#sped').val('€ 0.0');
-            $('#totale').val("€ " + $('#subtotale').val().substring(2,6));
+            $('#totale').val("€ " + tot);
         }
         if(id_spedizione == 2){
             var tot = parseFloat($('#subtotale').val().substring(2,7)) + 4.99;

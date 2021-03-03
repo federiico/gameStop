@@ -12,7 +12,7 @@
     $prezzo=0;
     $numero = rand(0,1000);
 
-    if( $nome == "" || $cognome== "" || $carta=="" || $sped=="") header("Location:cassa.php?errore=1");
+    if( $nome == "" || $cognome== "" || $carta=="" || $sped=="") header("Location: ../cassa.php?errore=1");
     else{
 
         

@@ -7,7 +7,7 @@
         $body = new Template("dtml/acquisto_effettuato.html");
         
     }
-    else header("Location: ../errore.php");
+    else header("Location: errore.php");
 
 
 

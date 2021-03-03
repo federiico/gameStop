@@ -8,7 +8,12 @@
             session_start();
             $quantitatotale=0;
             $errore=$_REQUEST["errore"];
-            if(isset($errore)) $body -> setContent("errore","CAMPI MANCANTI");
+            if(isset($errore)) {
+                $body -> setContent("errore","CAMPI MANCANTI");
+            
+            }
+            
+            
 
             //DETTAGLI SPEDIZIONE
 
@@ -62,7 +67,7 @@
                 if($gioco['Sconto'] > 0){
 
                     $nuovoPrezzo = ($gioco['Prezzo'] - (($gioco['Prezzo'] / 100) * $gioco['Sconto'])); //prezzo scontato
-                    $nuovoPrezzo = number_format((int)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
+                    $nuovoPrezzo = number_format((float)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
                     //$body -> setContent("Prezzo_articolo", $nuovoPrezzo);
                     $totprezzo=$nuovoPrezzo * $Id_gioco['quantita'];
                     $body -> setContent("Prezzo_articolo", "€ ".$totprezzo);
@@ -75,6 +80,7 @@
                 $body -> setContent("Quantità_articolo",$Id_gioco['quantita']);
 
                 $prezzototale=$totprezzo+$prezzototale;
+                $prezzototale = number_format((float)$prezzototale, 2, '.', '');
                 }
                 
             }
@@ -83,7 +89,7 @@
 
             $prezzofinale=$prezzototale + 0 ;
 
-            $body -> setContent("Totale",$prezzofinale);
+            $body -> setContent("Totale","€ ".$prezzofinale);
 
             if( $quantitatotale == 0 ) header('Location: carrello_vuoto.php');
         }
