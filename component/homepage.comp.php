@@ -26,7 +26,7 @@
                     $nuovoPrezzo = ($giocoPS4['Prezzo'] - (($giocoPS4['Prezzo'] / 100) * $giocoPS4['Sconto'])); //prezzo scontato
                     $nuovoPrezzoPS4 = number_format((float)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
                     $body -> setContent("Vecchio_prezzo_PS4","€ ".$giocoPS4['Prezzo']);
-                    $body -> setContent("Prezzo_corrente_PS4","€ ".$nuovoPrezzo);
+                    $body -> setContent("Prezzo_corrente_PS4","€ ".$nuovoPrezzoPS4);
                 }
                 else {
                     $body -> setContent("Offerta_PS4","");
@@ -64,9 +64,9 @@
         
                     $body -> setContent("Offerta_Xbox","Offerta");
                     $nuovoPrezzo = ($giocoXbox['Prezzo'] - (($giocoXbox['Prezzo'] / 100) * $giocoXbox['Sconto'])); //prezzo scontato
-                    $nuovoPrezzo = number_format((float)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
+                    $nuovoPrezzoXbox = number_format((float)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
                     $body -> setContent("Vecchio_prezzo_Xbox","€ ".$giocoXbox['Prezzo']);
-                    $body -> setContent("Prezzo_corrente_Xbox","€ ".$nuovoPrezzo);
+                    $body -> setContent("Prezzo_corrente_Xbox","€ ".$nuovoPrezzoXbox);
                 }
                 else {
                     $body -> setContent("Offerta_Xbox","");
@@ -144,10 +144,10 @@
                 if($giocoPc['Sconto'] > 0){
         
                     $body -> setContent("Offerta_Pc","Offerta");
-                    $nuovoPrezzo = ($giocoPc['Prezzo'] - (($giocoPc['Prezzo'] / 100) * $giocoPc['Sconto'])); //prezzo scontato
-                    $nuovoPrezzo = number_format((float)$nuovoPrezzo, 2, '.', ''); //approssimo a 2 cifre decimali
+                    $nuovoPrezzoPc = ($giocoPc['Prezzo'] - (($giocoPc['Prezzo'] / 100) * $giocoPc['Sconto'])); //prezzo scontato
+                    $nuovoPrezzoPc = number_format((float)$nuovoPrezzoPc, 2, '.', ''); //approssimo a 2 cifre decimali
                     $body -> setContent("Vecchio_prezzo_Pc","€ ".$giocoPc['Prezzo']);
-                    $body -> setContent("Prezzo_corrente_Pc","€ ".$nuovoPrezzo);
+                    $body -> setContent("Prezzo_corrente_Pc","€ ".$nuovoPrezzoPc);
                 }
                 else {
                     $body -> setContent("Offerta_Pc","");

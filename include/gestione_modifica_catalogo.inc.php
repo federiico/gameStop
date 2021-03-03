@@ -20,7 +20,7 @@
 
     $prezzo=number_format((float)$prezzo, 2, '.', '');
 
-    $query = " UPDATE articolo SET Nome='".$nome."', Prezzo='".$prezzo."', Sconto='".$sconto."', Descrizione=\"".$descrizione."\", Piattaforma='".$Piattaforma."', Anno='".$anno."', Produttore ='".$produttore."',
+    $query = " UPDATE articolo SET Nome='".$nome."', Prezzo='".$prezzo."', Sconto='".$sconto."', Descrizione=\"".$descrizione."\", Piattaforma='".$Piattaforma."', Anno='".$anno."', Produttore ='".$produttore."', Casa_sviluppatrice='".$casa."',
                 Classificazione='".$classificazione."', Genere='".$genere."', Lingua='".$lingua."' WHERE Id_articolo = '".$gioco."'" ;
     $result = $mysqli -> query($query);
 
@@ -28,6 +28,8 @@
 
     $query_disp = " UPDATE disponibilita SET Disponibilita = ".$disponibilita." WHERE Id_articolo = " .$gioco ;
     $result_disp = $mysqli -> query($query_disp);
+
+    echo $query;
 
     header("Location: ../catalogo.php")
 

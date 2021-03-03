@@ -10,7 +10,7 @@
         $_SESSION['Id_articolo'] = $_GET['gioco'];
  
 
-        $query = "SELECT a.Id_articolo as Id_articolo , Disponibilita, Nome, Anno, Piattaforma, Produttore, 'Casa sviluppatrice', Classificazione, Genere, Lingua, Prezzo, Sconto, Descrizione 
+        $query = "SELECT a.Id_articolo as Id_articolo , Disponibilita, Nome, Anno, Piattaforma, Produttore, Casa_sviluppatrice, Classificazione, Genere, Lingua, Prezzo, Sconto, Descrizione 
                     FROM Articolo as a JOIN Disponibilita as d on ( a.Id_articolo = d.Id_articolo ) WHERE a.Id_articolo='".$_GET['gioco']."'";
 
         $result = $mysqli -> query($query);
@@ -45,7 +45,7 @@
         $body -> setContent("Piattaforma_prodotto", $gioco['Piattaforma']);
         $body -> setContent("Anno_prodotto", $gioco['Anno']);
         $body -> setContent("Produttore_prodotto", $gioco['Produttore']);
-        $body -> setContent("Casa_Sviluppatrice_prodotto", $gioco['Casa sviluppatrice']);
+        $body -> setContent("Casa_Sviluppatrice_prodotto", $gioco['Casa_sviluppatrice']);
         $body -> setContent("Classificazione_prodotto", $gioco['Classificazione']);
         $body -> setContent("Genere_prodotto", $gioco['Genere']);
         $body -> setContent("Lingua_prodotto", $gioco['Lingua']);
