@@ -3,11 +3,11 @@
     require "include/auth.inc.php";
     session_start();
 
-    $nome=$_GET["nome"];
-    $cognome=$_GET["cognome"];
-    $indirizzo=$_GET["indirizzo"];
-    $carta=$_GET["carta"];
-    $sped=$_GET["sped"];
+    $nome=$_POST["nome"];
+    $cognome=$_POST["cognome"];
+    $indirizzo=$_POST["indirizzo"];
+    $carta=$_POST["carta"];
+    $sped=$_POST["sped"];
     $data = date ("Y-m-d");
     $prezzo=0;
     $numero = rand(0,1000);
@@ -32,11 +32,11 @@
             $result = $mysqli -> query($query);
 
             $query_agg ="INSERT INTO ordine (Numero, Data , Id_utente , Id_articolo, Quantita, Prezzo_totale, Id_indirizzo_sped, Id_modalita_pag, Id_tipo_sped) 
-                         VALUES ( ".$numero." , ".$data." ,".$_SESSION['Id_utente'].",".$Carrello['Id_articolo'].",".$Carrello['quantita'].", ".$prezzo." ,".$indirizzo.",".$carta.",".$sped.")";
+                         VALUES ( ".$numero." , '".$data."' ,".$_SESSION['Id_utente'].",".$Carrello['Id_articolo'].",".$Carrello['quantita'].", ".$prezzo." ,".$indirizzo.",".$carta.",".$sped.")";
             $result_agg = $mysqli -> query($query_agg);
 
+            
         }
-
         unset($_SESSION["Carrello"]);
     }
 

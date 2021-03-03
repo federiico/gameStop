@@ -78,7 +78,7 @@
                     $body -> setContent("Link_carrello_Xbox","");
 
                 }else{
-                    $body -> setContent("Link_carrello_Xbox","gestione_carrello.php?gioco=".$giocoXbox['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Link_carrello_Xbox","include/gestione_carrello.inc.php?gioco=".$giocoXbox['Id_articolo']."&quantita=1&azione=add");
                     $body -> setContent("Aggiungi_Xbox","Aggiungi al carrello");
                 }
                 $body -> setContent("Link_prodotto_Xbox","dettagli-prodotto.php?Id_articolo=".$giocoXbox['Id_articolo']);
@@ -119,7 +119,7 @@
                     $body -> setContent("Link_carrello_Nintendo","");
 
                 }else{
-                    $body -> setContent("Link_carrello_Nintendo","gestione_carrello.php?gioco=".$giocoNintendo['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Link_carrello_Nintendo","include/gestione_carrello.inc.php?gioco=".$giocoNintendo['Id_articolo']."&quantita=1&azione=add");
                     $body -> setContent("Aggiungi_Nintendo","Aggiungi al carrello");
                 }
                 $body -> setContent("Link_prodotto_Nintendo","dettagli-prodotto.php?Id_articolo=".$giocoNintendo['Id_articolo']);
@@ -159,7 +159,7 @@
                     $body -> setContent("Link_carrello_Pc","");
 
                 }else{
-                    $body -> setContent("Link_carrello_Pc","gestione_carrello.php?gioco=".$giocoPc['Id_articolo']."&quantita=1&azione=add");
+                    $body -> setContent("Link_carrello_Pc","include/gestione_carrello.inc.php?gioco=".$giocoPc['Id_articolo']."&quantita=1&azione=add");
                     $body -> setContent("Aggiungi_Pc","Aggiungi al carrello");
                 }
                 $body -> setContent("Link_prodotto_Pc","dettagli-prodotto.php?Id_articolo=".$giocoPc['Id_articolo']);
