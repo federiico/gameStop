@@ -107,7 +107,7 @@
                             $body -> setContent("Link_carrello","");
             
                         }else{
-                            $body -> setContent("Link_carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."&quantita=1&azione=add");
+                            $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."&quantita=1&azione=add");
                             $body -> setContent("Aggiungi","Aggiungi al carrello");
                         }
                         $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
@@ -232,10 +232,10 @@
                     }
                     if($gioco['disponibilita'] == 0){
                         $body -> setContent("Aggiungi","Prodotto esaurito");
-                    $body -> setContent("Link_carrello","");
+                        $body -> setContent("Link_carrello","");
 
                     }else{
-                        $body -> setContent("Link_carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."&quantita=1&azione=add");
+                        $body -> setContent("Link_Carrello","include/gestione_carrello.inc.php?gioco=".$gioco['Id_articolo']."&quantita=1&azione=add");
                         $body -> setContent("Aggiungi","Aggiungi al carrello");
                     }
                     $body -> setContent("Link_prodotto","dettagli-prodotto.php?Id_articolo=".$gioco['Id_articolo']);
